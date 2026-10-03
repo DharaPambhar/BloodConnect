@@ -20,8 +20,6 @@
             align-items: flex-start;
         }
 
-        /* REGISTRATION CARD */
-
         .registration-card {
             flex: 1.2;
             background-color: #FFFFFF;
@@ -46,8 +44,6 @@
             font-size: 14px;
             line-height: 1.6;
         }
-
-        /* STEP INDICATOR */
 
         .steps {
             display: flex;
@@ -111,6 +107,12 @@
             padding: 14px;
             text-align: center;
             color: #374151;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .role-box:hover {
+            border-color: #D80032;
         }
 
         .role-box.selected {
@@ -124,8 +126,6 @@
             display: block;
             margin-bottom: 5px;
         }
-
-        /* FORM */
 
         .form-row {
             display: flex;
@@ -180,22 +180,6 @@
             margin-top: 4px;
         }
 
-        /* TERMS */
-
-        .terms {
-            color: #6B7280;
-            font-size: 12px;
-            margin: 8px 0 20px;
-        }
-
-        .terms a {
-            color: #D80032;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* BUTTON */
-
         .create-button {
             width: 100%;
             background-color: #D80032;
@@ -212,8 +196,6 @@
             background-color: #B9002B;
         }
 
-        /* LOGIN LINK */
-
         .login-link {
             text-align: center;
             margin-top: 20px;
@@ -226,8 +208,6 @@
             font-weight: bold;
             text-decoration: none;
         }
-
-        /* RIGHT COMMUNITY */
 
         .community-section {
             flex: 0.8;
@@ -264,8 +244,6 @@
             line-height: 1.6;
             margin: 0;
         }
-
-        /* RESPONSIVE */
 
         @media (max-width: 850px) {
 
@@ -332,9 +310,7 @@
 
                     </div>
 
-
                     <div class="step-line"></div>
-
 
                     <div class="step">
 
@@ -346,9 +322,7 @@
 
                     </div>
 
-
                     <div class="step-line"></div>
-
 
                     <div class="step">
 
@@ -388,7 +362,12 @@
 
                 <div class="role-selection">
 
-                    <div class="role-box selected">
+
+                    <!-- DONOR -->
+
+                    <div class="role-box selected"
+                         id="donorRole"
+                         onclick="selectRole('Donor')">
 
                         <span class="role-icon">
                             ♥
@@ -399,7 +378,11 @@
                     </div>
 
 
-                    <div class="role-box">
+                    <!-- BLOOD SEEKER -->
+
+                    <div class="role-box"
+                         id="seekerRole"
+                         onclick="selectRole('Blood Seeker')">
 
                         <span class="role-icon">
                             🔍
@@ -410,6 +393,14 @@
                     </div>
 
                 </div>
+
+
+                <!-- SELECTED ROLE -->
+
+                <asp:HiddenField
+                    ID="SelectedRole"
+                    runat="server"
+                    Value="Donor" />
 
 
                 <!-- FIRST NAME + LAST NAME -->
@@ -423,13 +414,11 @@
                             FIRST NAME
                         </label>
 
-
                         <div class="input-icon-box">
 
                             <span class="left-icon">
                                 👤
                             </span>
-
 
                             <asp:TextBox
                                 ID="FirstNameTXT"
@@ -439,7 +428,6 @@
                             </asp:TextBox>
 
                         </div>
-
 
                         <asp:RequiredFieldValidator
                             ID="RequiredFieldValidator1"
@@ -459,13 +447,11 @@
                             LAST NAME
                         </label>
 
-
                         <div class="input-icon-box">
 
                             <span class="left-icon">
                                 👤
                             </span>
-
 
                             <asp:TextBox
                                 ID="LastNameTXT"
@@ -475,7 +461,6 @@
                             </asp:TextBox>
 
                         </div>
-
 
                         <asp:RequiredFieldValidator
                             ID="RequiredFieldValidator2"
@@ -499,13 +484,11 @@
                         EMAIL ADDRESS
                     </label>
 
-
                     <div class="input-icon-box">
 
                         <span class="left-icon">
                             ✉
                         </span>
-
 
                         <asp:TextBox
                             ID="EmailTXT"
@@ -516,7 +499,6 @@
 
                     </div>
 
-
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidator3"
                         runat="server"
@@ -525,7 +507,6 @@
                         ForeColor="Red"
                         CssClass="validation">
                     </asp:RequiredFieldValidator>
-
 
                     <asp:RegularExpressionValidator
                         ID="RegularExpressionValidator1"
@@ -548,13 +529,11 @@
                         PHONE NUMBER
                     </label>
 
-
                     <div class="input-icon-box">
 
                         <span class="left-icon">
                             ☎
                         </span>
-
 
                         <asp:TextBox
                             ID="PhoneTXT"
@@ -566,7 +545,6 @@
 
                     </div>
 
-
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidator4"
                         runat="server"
@@ -575,7 +553,6 @@
                         ForeColor="Red"
                         CssClass="validation">
                     </asp:RequiredFieldValidator>
-
 
                     <asp:RegularExpressionValidator
                         ID="RegularExpressionValidator2"
@@ -601,13 +578,11 @@
                             CITY
                         </label>
 
-
                         <div class="input-icon-box">
 
                             <span class="left-icon">
                                 🏢
                             </span>
-
 
                             <asp:TextBox
                                 ID="CityTXT"
@@ -617,7 +592,6 @@
                             </asp:TextBox>
 
                         </div>
-
 
                         <asp:RequiredFieldValidator
                             ID="RequiredFieldValidator5"
@@ -637,13 +611,11 @@
                             PINCODE / ZIP
                         </label>
 
-
                         <div class="input-icon-box">
 
                             <span class="left-icon">
                                 📍
                             </span>
-
 
                             <asp:TextBox
                                 ID="PincodeTXT"
@@ -653,7 +625,6 @@
                             </asp:TextBox>
 
                         </div>
-
 
                         <asp:RequiredFieldValidator
                             ID="RequiredFieldValidator6"
@@ -680,13 +651,11 @@
                             CREATE PASSWORD
                         </label>
 
-
                         <div class="input-icon-box">
 
                             <span class="left-icon">
                                 🔒
                             </span>
-
 
                             <asp:TextBox
                                 ID="PasswordTXT"
@@ -697,7 +666,6 @@
                             </asp:TextBox>
 
                         </div>
-
 
                         <asp:RequiredFieldValidator
                             ID="RequiredFieldValidator7"
@@ -717,13 +685,11 @@
                             CONFIRM PASSWORD
                         </label>
 
-
                         <div class="input-icon-box">
 
                             <span class="left-icon">
                                 🔒
                             </span>
-
 
                             <asp:TextBox
                                 ID="ConfirmPasswordTXT"
@@ -735,7 +701,6 @@
 
                         </div>
 
-
                         <asp:RequiredFieldValidator
                             ID="RequiredFieldValidator8"
                             runat="server"
@@ -744,7 +709,6 @@
                             ForeColor="Red"
                             CssClass="validation">
                         </asp:RequiredFieldValidator>
-
 
                         <asp:CompareValidator
                             ID="CompareValidator1"
@@ -759,9 +723,6 @@
                     </div>
 
                 </div>
-
-
-               
 
 
                 <!-- CREATE ACCOUNT -->
@@ -796,7 +757,6 @@
                 <h2>
                     Be Part of the BloodConnect Community
                 </h2>
-
 
                 <p>
                     Whether you donate blood or need support,
@@ -851,5 +811,38 @@
         </div>
 
     </section>
+
+
+    <!-- ROLE SELECTION SCRIPT -->
+
+    <script>
+
+        function selectRole(role) {
+
+            var donor = document.getElementById("donorRole");
+            var seeker = document.getElementById("seekerRole");
+
+            var hiddenField = document.getElementById("<%= SelectedRole.ClientID %>");
+
+            if (role === "Donor") {
+
+                donor.classList.add("selected");
+                seeker.classList.remove("selected");
+
+                hiddenField.value = "Donor";
+
+            }
+            else {
+
+                seeker.classList.add("selected");
+                donor.classList.remove("selected");
+
+                hiddenField.value = "Blood Seeker";
+
+            }
+
+        }
+
+    </script>
 
 </asp:Content>
