@@ -1,0 +1,336 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"
+    CodeBehind="site1.master.cs"
+    Inherits="BloodConnect.site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <title>BloodConnect</title>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            background-color: #faf9ff;
+            color: #202338;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background-color: white;
+            padding: 18px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .logo {
+            color: #c90045;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333333;
+            margin: 0 10px;
+            font-size: 14px;
+            padding-bottom: 6px;
+        }
+.menu a {
+    text-decoration: none;
+    color: #333333;
+    margin: 0 10px;
+    font-size: 14px;
+    padding-bottom: 6px;
+}
+
+.menu a:hover {
+    color: #c90045;
+}
+
+.menu a.active {
+    color: #c90045;
+    font-weight: bold;
+    border-bottom: 2px solid #c90045;
+}
+
+        .login {
+            color: #333333;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        .register {
+            background-color: #c90045;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .main {
+            min-height: 500px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background-color: #f0f2ff;
+            padding: 40px 60px 20px 60px;
+            margin-top: 40px;
+        }
+
+        .footer-main {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer h3 {
+            color: #c90045;
+        }
+
+        .footer h4 {
+            margin-bottom: 12px;
+        }
+
+        .footer p {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        .footer a {
+            display: block;
+            color: #666666;
+            text-decoration: none;
+            margin: 7px 0;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #dddddd;
+            margin-top: 25px;
+            padding-top: 15px;
+            font-size: 12px;
+            color: #777777;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+        <!-- NAVBAR -->
+
+        <div class="navbar">
+
+            <div class="logo">
+                🩸 BloodConnect
+            </div>
+
+
+            <div class="menu">
+
+                <a id="lnkHome"
+                   href="Home.aspx"
+                   runat="server">
+                    Home
+                </a>
+
+                <a id="lnkAbout"
+                   href="About.aspx"
+                   runat="server">
+                    About Us
+                </a>
+
+                <a id="lnkFindBlood"
+                   href="FindBlood.aspx"
+                   runat="server">
+                    Find Blood
+                </a>
+
+                <a id="lnkCamps"
+                   href="BloodCamps.aspx"
+                   runat="server">
+                    Blood Camps
+                </a>
+
+                <a id="lnkBanks"
+                   href="BloodBanks.aspx"
+                   runat="server">
+                    Blood Banks
+                </a>
+
+                <a id="lnkEmergency"
+                   href="Emergency.aspx"
+                   runat="server">
+                    Emergency
+                </a>
+
+                <a id="lnkContact"
+                   href="Contact.aspx"
+                   runat="server">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <a href="Login.aspx"
+                   class="login">
+                    Login
+                </a>
+
+                <a href="Registration.aspx"
+                   class="register">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAIN CONTENT -->
+
+        <div class="main">
+
+            <asp:ContentPlaceHolder
+                ID="ContentPlaceHolder1"
+                runat="server">
+
+            </asp:ContentPlaceHolder>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            <div class="footer-main">
+
+
+                <div>
+
+                    <h3>🩸 BloodConnect</h3>
+
+                    <p>
+                        Saving lives through community-driven
+                        blood donation and connection.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>Company</h4>
+
+                    <a href="About.aspx">
+                        About Us
+                    </a>
+
+                    <a href="#">
+                        Our Mission
+                    </a>
+
+                    <a href="#">
+                        Careers
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>Quick Links</h4>
+
+                    <a href="FindBlood.aspx">
+                        Find Blood
+                    </a>
+
+                    <a href="BloodBanks.aspx">
+                        Blood Banks
+                    </a>
+
+                    <a href="BloodCamps.aspx">
+                        Blood Camps
+                    </a>
+
+                    <a href="Emergency.aspx">
+                        Emergency
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>For Donors</h4>
+
+                    <a href="Registration.aspx">
+                        Become a Donor
+                    </a>
+
+                    <a href="#">
+                        Donation Guidelines
+                    </a>
+
+                    <a href="#">
+                        My History
+                    </a>
+
+                    <a href="BloodCamps.aspx">
+                        Find Camps
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                © 2026 BloodConnect. All rights reserved.
+
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <!-- ACTIVE MENU SCRIPT -->
+    <script>
+        var currentPage = window.location.pathname.split("/").pop().toLowerCase();
+
+        var menuLinks = document.querySelectorAll(".menu a");
+
+        menuLinks.forEach(function (link) {
+
+            var linkPage = link.getAttribute("href").split("/").pop().toLowerCase();
+
+            if (linkPage === currentPage) {
+                link.classList.add("active");
+            }
+
+        });
+    </script>
+
+</body>
+</html>
+
