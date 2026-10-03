@@ -70,13 +70,22 @@
     <Content Include="About.aspx" />
     <Content Include="BloodBanks.aspx" />
     <Content Include="BloodCamps.aspx" />
+    <Content Include="BookDonationSlot.aspx" />
+    <Content Include="CampDetails.aspx" />
     <Content Include="Complete.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Donation_Eligibility.aspx" />
+    <Content Include="DonorDashboard.aspx" />
+    <Content Include="Donor_profile.aspx" />
+    <Content Include="EditProfile.aspx" />
     <Content Include="Emergency.aspx" />
+    <Content Include="EmergencyDetails.aspx" />
     <Content Include="FindBlood.aspx" />
+    <Content Include="FindCamps.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="NearbyEmergency.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="VerifyAccount.aspx" />
     <Content Include="Web.config" />
@@ -103,6 +112,20 @@
     <Compile Include="BloodCamps.aspx.designer.cs">
       <DependentUpon>BloodCamps.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BookDonationSlot.aspx.cs">
+      <DependentUpon>BookDonationSlot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookDonationSlot.aspx.designer.cs">
+      <DependentUpon>BookDonationSlot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CampDetails.aspx.cs">
+      <DependentUpon>CampDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampDetails.aspx.designer.cs">
+      <DependentUpon>CampDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Complete.aspx.cs">
       <DependentUpon>Complete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -117,6 +140,41 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Donation_Eligibility.aspx.cs">
+      <DependentUpon>Donation_Eligibility.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Donation_Eligibility.aspx.designer.cs">
+      <DependentUpon>Donation_Eligibility.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Donor.Master.cs">
+      <DependentUpon>Donor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Donor.Master.designer.cs">
+      <DependentUpon>Donor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DonorDashboard.aspx.cs">
+      <DependentUpon>DonorDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonorDashboard.aspx.designer.cs">
+      <DependentUpon>DonorDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Donor_profile.aspx.cs">
+      <DependentUpon>Donor_profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Donor_profile.aspx.designer.cs">
+      <DependentUpon>Donor_profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Emergency.aspx.cs">
       <DependentUpon>Emergency.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -124,12 +182,26 @@
     <Compile Include="Emergency.aspx.designer.cs">
       <DependentUpon>Emergency.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EmergencyDetails.aspx.cs">
+      <DependentUpon>EmergencyDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmergencyDetails.aspx.designer.cs">
+      <DependentUpon>EmergencyDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FindBlood.aspx.cs">
       <DependentUpon>FindBlood.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FindBlood.aspx.designer.cs">
       <DependentUpon>FindBlood.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FindCamps.aspx.cs">
+      <DependentUpon>FindCamps.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FindCamps.aspx.designer.cs">
+      <DependentUpon>FindCamps.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -147,6 +219,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NearbyEmergency.aspx.cs">
+      <DependentUpon>NearbyEmergency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NearbyEmergency.aspx.designer.cs">
+      <DependentUpon>NearbyEmergency.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.aspx.cs">
@@ -172,6 +251,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Donor.Master" />
     <None Include="packages.config" />
     <Content Include="site1.Master" />
     <None Include="Web.Debug.config">
@@ -185,6 +265,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
     <Folder Include="Models\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
