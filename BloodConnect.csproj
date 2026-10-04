@@ -68,6 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="App_Data\BloodConnect.mdf" />
+    <Content Include="App_Data\BloodConnect_log.ldf">
+      <DependentUpon>BloodConnect.mdf</DependentUpon>
+    </Content>
     <Content Include="BloodBanks.aspx" />
     <Content Include="BloodCamps.aspx" />
     <Content Include="BookDonationSlot.aspx" />
@@ -294,7 +298,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="images\" />
     <Folder Include="Models\" />
     <Folder Include="NewFolder1\" />

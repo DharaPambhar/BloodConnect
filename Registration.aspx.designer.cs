@@ -15,6 +15,24 @@ namespace WebApplication1
     {
 
         /// <summary>
+        /// btnDonor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDonor;
+
+        /// <summary>
+        /// btnSeeker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSeeker;
+
+        /// <summary>
         /// SelectedRole control.
         /// </summary>
         /// <remarks>

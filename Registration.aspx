@@ -107,12 +107,15 @@
             padding: 14px;
             text-align: center;
             color: #374151;
+            background-color: #FFFFFF;
             cursor: pointer;
             transition: 0.2s;
+            font-size: 14px;
         }
 
         .role-box:hover {
             border-color: #D80032;
+            color: #D80032;
         }
 
         .role-box.selected {
@@ -284,7 +287,9 @@
 </asp:Content>
 
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2"
+    ContentPlaceHolderID="ContentPlaceHolder1"
+    runat="server">
 
     <section class="registration-page">
 
@@ -365,32 +370,24 @@
 
                     <!-- DONOR -->
 
-                    <div class="role-box selected"
-                         id="donorRole"
-                         onclick="selectRole('Donor')">
-
-                        <span class="role-icon">
-                            ♥
-                        </span>
-
-                        Donor
-
-                    </div>
+                    <asp:Button
+                        ID="btnDonor"
+                        runat="server"
+                        Text="♥  Donor"
+                        CssClass="role-box selected"
+                        OnClick="btnDonor_Click"
+                        CausesValidation="false" />
 
 
                     <!-- BLOOD SEEKER -->
 
-                    <div class="role-box"
-                         id="seekerRole"
-                         onclick="selectRole('Blood Seeker')">
-
-                        <span class="role-icon">
-                            🔍
-                        </span>
-
-                        Blood Seeker
-
-                    </div>
+                    <asp:Button
+                        ID="btnSeeker"
+                        runat="server"
+                        Text="🔍  Blood Seeker"
+                        CssClass="role-box"
+                        OnClick="btnSeeker_Click"
+                        CausesValidation="false" />
 
                 </div>
 
@@ -811,38 +808,5 @@
         </div>
 
     </section>
-
-
-    <!-- ROLE SELECTION SCRIPT -->
-
-    <script>
-
-        function selectRole(role) {
-
-            var donor = document.getElementById("donorRole");
-            var seeker = document.getElementById("seekerRole");
-
-            var hiddenField = document.getElementById("<%= SelectedRole.ClientID %>");
-
-            if (role === "Donor") {
-
-                donor.classList.add("selected");
-                seeker.classList.remove("selected");
-
-                hiddenField.value = "Donor";
-
-            }
-            else {
-
-                seeker.classList.add("selected");
-                donor.classList.remove("selected");
-
-                hiddenField.value = "Blood Seeker";
-
-            }
-
-        }
-
-    </script>
 
 </asp:Content>
