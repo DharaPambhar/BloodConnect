@@ -74,8 +74,11 @@
     <Content Include="CampDetails.aspx" />
     <Content Include="Complete.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="DonationDetails.aspx" />
+    <Content Include="DonationHistory.aspx" />
     <Content Include="Donation_Eligibility.aspx" />
     <Content Include="DonorDashboard.aspx" />
+    <Content Include="DonorNotifications.aspx" />
     <Content Include="Donor_profile.aspx" />
     <Content Include="EditProfile.aspx" />
     <Content Include="Emergency.aspx" />
@@ -85,6 +88,7 @@
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="NearbyEmergency.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="VerifyAccount.aspx" />
@@ -140,6 +144,20 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DonationDetails.aspx.cs">
+      <DependentUpon>DonationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonationDetails.aspx.designer.cs">
+      <DependentUpon>DonationDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DonationHistory.aspx.cs">
+      <DependentUpon>DonationHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonationHistory.aspx.designer.cs">
+      <DependentUpon>DonationHistory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Donation_Eligibility.aspx.cs">
       <DependentUpon>Donation_Eligibility.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -160,6 +178,13 @@
     </Compile>
     <Compile Include="DonorDashboard.aspx.designer.cs">
       <DependentUpon>DonorDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DonorNotifications.aspx.cs">
+      <DependentUpon>DonorNotifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonorNotifications.aspx.designer.cs">
+      <DependentUpon>DonorNotifications.aspx</DependentUpon>
     </Compile>
     <Compile Include="Donor_profile.aspx.cs">
       <DependentUpon>Donor_profile.aspx</DependentUpon>
@@ -219,6 +244,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="NearbyEmergency.aspx.cs">
       <DependentUpon>NearbyEmergency.aspx</DependentUpon>

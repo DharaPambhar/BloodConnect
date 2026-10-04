@@ -433,7 +433,7 @@
 
             <div class="logout">
 
-                <a href="Login.aspx">
+                <a href="Logout.aspx">
 
                     <span class="icon">↪</span>
                     <span>Logout</span>

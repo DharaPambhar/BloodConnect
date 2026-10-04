@@ -12,7 +12,11 @@ namespace WebApplication1
         {
             if (Page.IsValid)
             {
-                // Login code will be added later
+                // Login successful
+                Session["User"] = EMAILTXT.Text;
+
+                // Open Donor Dashboard
+                Response.Redirect("DonorDashboard.aspx");
             }
         }
     }
