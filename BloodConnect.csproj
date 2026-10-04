@@ -95,6 +95,7 @@
     <Content Include="Logout.aspx" />
     <Content Include="NearbyEmergency.aspx" />
     <Content Include="Registration.aspx" />
+    <Content Include="User_Dashboard.aspx" />
     <Content Include="VerifyAccount.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -278,6 +279,20 @@
     <Compile Include="site1.Master.designer.cs">
       <DependentUpon>site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="User.Master.cs">
+      <DependentUpon>User.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.Master.designer.cs">
+      <DependentUpon>User.Master</DependentUpon>
+    </Compile>
+    <Compile Include="User_Dashboard.aspx.cs">
+      <DependentUpon>User_Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Dashboard.aspx.designer.cs">
+      <DependentUpon>User_Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VerifyAccount.aspx.cs">
       <DependentUpon>VerifyAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -290,6 +305,7 @@
     <Content Include="Donor.Master" />
     <None Include="packages.config" />
     <Content Include="site1.Master" />
+    <Content Include="User.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

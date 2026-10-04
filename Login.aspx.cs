@@ -2,7 +2,7 @@
 using System;
 using System.Data.SqlClient;
 
-namespace WebApplication1
+namespace BloodConnect
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -52,7 +52,7 @@ namespace WebApplication1
                     }
                     else if (role == "Blood Seeker")
                     {
-                        Response.Redirect("UserDashboard.aspx");
+                        Response.Redirect("User_Dashboard.aspx");
                     }
                     else if (role == "Admin")
                     {

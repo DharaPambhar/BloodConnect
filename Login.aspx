@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site1.Master"
     AutoEventWireup="true" CodeBehind="Login.aspx.cs"
-    Inherits="WebApplication1.Login" %>
+    Inherits="BloodConnect.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
