@@ -1,11 +1,11 @@
-﻿<%@ Page Title="User Dashboard" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="User_Dashboard.aspx.cs" Inherits="BloodConnect.User_Dashboard" %>
+﻿
+<%@ Page Title="User Dashboard" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="User_Dashboard.aspx.cs" Inherits="BloodConnect.User_Dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     User Dashboard
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-
     <style>
         .dashboard {
             width: 100%;
@@ -174,14 +174,24 @@
 
         .advanced-btn {
             height: 42px;
-            padding: 0 15px;
+            padding: 11px 15px;
             border: none;
             border-radius: 9px;
             background: #eee9ff;
             color: #7050ad;
             font-size: 12px;
             font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .advanced-btn:hover {
+            background: #e2d9ff;
+            color: #7050ad;
         }
 
         .quick-title {
@@ -495,7 +505,6 @@
             }
         }
     </style>
-
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PageHeading" runat="server">
@@ -506,15 +515,11 @@
 
     <div class="dashboard">
 
-        <!-- WELCOME -->
         <div class="welcome-box">
-
             <div>
                 <h2>
                     Good Morning,
-                    <asp:Label ID="lblWelcomeName" runat="server">
-                        User
-                    </asp:Label>
+                    <asp:Label ID="lblWelcomeName" runat="server">User</asp:Label>
                     👏
                 </h2>
 
@@ -532,11 +537,9 @@
             <div class="welcome-icon">
                 <i class="fa-solid fa-hand-holding-droplet"></i>
             </div>
-
         </div>
 
 
-        <!-- EMERGENCY -->
         <div class="emergency-box">
 
             <div class="emergency-left">
@@ -566,10 +569,8 @@
 
         <div class="dashboard-grid">
 
-            <!-- LEFT SIDE -->
             <div>
 
-                <!-- SEARCH DONOR -->
                 <div class="section-card">
 
                     <div class="section-header">
@@ -579,6 +580,7 @@
                     <div class="search-row">
 
                         <div class="field">
+
                             <label>Blood Group</label>
 
                             <select class="input-control">
@@ -592,17 +594,23 @@
                                 <option>AB+</option>
                                 <option>AB-</option>
                             </select>
+
                         </div>
 
+
                         <div class="field">
+
                             <label>Location</label>
 
                             <input type="text"
                                    class="input-control"
                                    placeholder="Enter area or pincode" />
+
                         </div>
 
+
                         <div class="field">
+
                             <label>Radius</label>
 
                             <select class="input-control">
@@ -611,13 +619,16 @@
                                 <option>Within 15 km</option>
                                 <option>Within 25 km</option>
                             </select>
+
                         </div>
 
-                        <button type="button"
-                                class="advanced-btn"
-                                onclick="window.location.href='User_DonorSearch.aspx'">
+
+                        <asp:HyperLink ID="AdvancedSearchLink"
+                            runat="server"
+                            NavigateUrl="~/User_DonorSearch.aspx"
+                            CssClass="advanced-btn">
                             Advanced Search
-                        </button>
+                        </asp:HyperLink>
 
                     </div>
 
@@ -625,6 +636,7 @@
                     <div class="quick-title">
                         Or select quickly
                     </div>
+
 
                     <div class="blood-buttons">
 
@@ -642,7 +654,6 @@
                 </div>
 
 
-                <!-- ACTIVE REQUESTS -->
                 <div class="section-card">
 
                     <div class="section-header">
@@ -675,14 +686,19 @@
 
                         </div>
 
+
                         <div class="location">
+
                             <i class="fa-solid fa-location-dot"></i>
                             Ahmedabad (Apollo Hospital)
+
                         </div>
+
 
                         <div class="status">
                             Donor search in progress...
                         </div>
+
 
                         <div class="actions">
 
@@ -719,14 +735,19 @@
 
                         </div>
 
+
                         <div class="location">
+
                             <i class="fa-solid fa-location-dot"></i>
                             Ahmedabad (Civil Hospital)
+
                         </div>
+
 
                         <div class="status">
                             Searching for potential donors...
                         </div>
+
 
                         <div class="actions">
 
@@ -747,7 +768,6 @@
                 </div>
 
 
-                <!-- POTENTIAL DONORS -->
                 <div class="section-card">
 
                     <div class="section-header">
@@ -856,10 +876,9 @@
             </div>
 
 
-            <!-- RIGHT SIDE -->
             <div>
 
-                <!-- STATS -->
+
                 <div class="stats-grid">
 
                     <div class="stat-card">
@@ -868,7 +887,9 @@
                             <i class="fa-solid fa-droplet"></i>
                         </div>
 
-                        <div class="stat-number">2</div>
+                        <div class="stat-number">
+                            2
+                        </div>
 
                         <div class="stat-label">
                             Active Requests
@@ -883,7 +904,9 @@
                             <i class="fa-solid fa-user-group"></i>
                         </div>
 
-                        <div class="stat-number">8</div>
+                        <div class="stat-number">
+                            8
+                        </div>
 
                         <div class="stat-label">
                             Donors Contacted
@@ -898,7 +921,9 @@
                             <i class="fa-solid fa-reply"></i>
                         </div>
 
-                        <div class="stat-number">5</div>
+                        <div class="stat-number">
+                            5
+                        </div>
 
                         <div class="stat-label">
                             Responses
@@ -913,7 +938,9 @@
                             <i class="fa-solid fa-circle-check"></i>
                         </div>
 
-                        <div class="stat-number">3</div>
+                        <div class="stat-number">
+                            3
+                        </div>
 
                         <div class="stat-label">
                             Completed
@@ -924,7 +951,6 @@
                 </div>
 
 
-                <!-- RECENT ACTIVITY -->
                 <div class="section-card">
 
                     <div class="section-header">
@@ -1006,7 +1032,6 @@
                 </div>
 
 
-                <!-- URGENT NEEDS -->
                 <div class="section-card">
 
                     <div class="section-header">
@@ -1024,7 +1049,9 @@
 
                             <div class="urgent-info">
 
-                                <strong>2 Units</strong>
+                                <strong>
+                                    2 Units
+                                </strong>
 
                                 <span>
                                     📍 3.2 km away • Needed Today
@@ -1051,7 +1078,9 @@
 
                             <div class="urgent-info">
 
-                                <strong>1 Unit</strong>
+                                <strong>
+                                    1 Unit
+                                </strong>
 
                                 <span>
                                     📍 5.1 km away • Needed by Tmrw
@@ -1070,7 +1099,6 @@
                 </div>
 
 
-                <!-- DISCLAIMER -->
                 <div class="disclaimer">
 
                     <i class="fa-solid fa-circle-info"></i>

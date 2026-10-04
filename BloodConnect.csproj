@@ -96,6 +96,8 @@
     <Content Include="NearbyEmergency.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="User_Dashboard.aspx" />
+    <Content Include="User_EditProfile.aspx" />
+    <Content Include="User_Profile.aspx" />
     <Content Include="VerifyAccount.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -292,6 +294,20 @@
     </Compile>
     <Compile Include="User_Dashboard.aspx.designer.cs">
       <DependentUpon>User_Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_EditProfile.aspx.cs">
+      <DependentUpon>User_EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_EditProfile.aspx.designer.cs">
+      <DependentUpon>User_EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_Profile.aspx.cs">
+      <DependentUpon>User_Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Profile.aspx.designer.cs">
+      <DependentUpon>User_Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="VerifyAccount.aspx.cs">
       <DependentUpon>VerifyAccount.aspx</DependentUpon>

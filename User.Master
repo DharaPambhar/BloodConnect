@@ -1,9 +1,11 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.Master.cs" Inherits="BloodConnect.User" %>
+﻿
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.Master.cs" Inherits="BloodConnect.User" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -13,15 +15,20 @@
         </asp:ContentPlaceHolder>
     </title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
 
+    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
+
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -33,7 +40,9 @@
             color: #333;
         }
 
+
         /* SIDEBAR */
+
         .sidebar {
             position: fixed;
             left: 0;
@@ -47,6 +56,7 @@
             z-index: 1000;
         }
 
+
         .logo {
             display: flex;
             align-items: center;
@@ -54,17 +64,21 @@
             padding: 5px 12px 25px 12px;
         }
 
+
         .logo-icon {
             width: 42px;
             height: 42px;
             background: #b91c1c;
             color: white;
             border-radius: 12px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 21px;
         }
+
 
         .logo-text {
             font-size: 22px;
@@ -72,28 +86,39 @@
             color: #b91c1c;
         }
 
+
         .menu-title {
             font-size: 12px;
             color: #999;
             font-weight: 600;
+
             padding: 0 14px;
             margin: 8px 0 10px;
+
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
+
         .menu-link {
             display: flex;
             align-items: center;
+
             gap: 13px;
+
             text-decoration: none;
             color: #555;
+
             padding: 12px 14px;
             margin-bottom: 4px;
+
             border-radius: 10px;
+
             font-size: 14px;
+
             transition: 0.2s;
         }
+
 
         .menu-link i {
             width: 20px;
@@ -101,124 +126,189 @@
             font-size: 15px;
         }
 
+
         .menu-link:hover {
             background: #fff1f1;
             color: #b91c1c;
         }
+
 
         .menu-link.active {
             background: #b91c1c;
             color: white;
         }
 
+
         .menu-link.active:hover {
             background: #991b1b;
             color: white;
         }
 
+
         .logout-link {
             color: #dc2626;
         }
+
 
         .logout-link:hover {
             background: #fff1f1;
             color: #b91c1c;
         }
 
+
+
         /* MAIN AREA */
+
         .main-area {
             margin-left: 255px;
             min-height: 100vh;
         }
 
+
+
         /* TOP HEADER */
+
         .top-header {
             height: 78px;
+
             background: white;
+
             border-bottom: 1px solid #eeeeee;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 0 30px;
         }
+
 
         .page-title {
             font-size: 22px;
             font-weight: 700;
+
             color: #222;
+
             margin: 0;
         }
+
 
         .user-area {
             display: flex;
             align-items: center;
+
             gap: 18px;
         }
+
+
+
+        /* NOTIFICATION */
 
         .notification {
             width: 40px;
             height: 40px;
+
             border-radius: 50%;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             background: #fff5f5;
             color: #b91c1c;
+
             text-decoration: none;
+
             position: relative;
         }
+
 
         .notification:hover {
             background: #ffe5e5;
             color: #991b1b;
         }
 
+
         .notification-dot {
             position: absolute;
+
             width: 8px;
             height: 8px;
+
             background: #dc2626;
+
             border-radius: 50%;
+
             top: 7px;
             right: 8px;
         }
 
+
+
+        /* PROFILE AREA */
+
         .profile-area {
             display: flex;
             align-items: center;
+
             gap: 10px;
         }
+
+
+        /* FIRST LETTER CIRCLE */
 
         .profile-image {
             width: 43px;
             height: 43px;
+
             border-radius: 50%;
-            object-fit: cover;
+
+            background: #e8defc;
+            color: #6b50b5;
+
             border: 2px solid #f1d1d1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: 700;
         }
+
 
         .profile-info {
             line-height: 1.3;
         }
 
+
         .profile-name {
             font-size: 14px;
             font-weight: 700;
+
             color: #333;
         }
+
 
         .profile-role {
             font-size: 12px;
             color: #999;
         }
 
+
+
         /* CONTENT */
+
         .content-area {
             padding: 30px;
         }
 
+
+
         /* MOBILE */
+
         @media (max-width: 900px) {
+
             .sidebar {
                 width: 220px;
             }
@@ -232,7 +322,9 @@
             }
         }
 
+
         @media (max-width: 700px) {
+
             .sidebar {
                 width: 70px;
                 padding: 20px 8px;
@@ -247,12 +339,14 @@
 
             .logo {
                 justify-content: center;
+
                 padding-left: 0;
                 padding-right: 0;
             }
 
             .menu-link {
                 justify-content: center;
+
                 padding: 13px 5px;
             }
 
@@ -268,183 +362,332 @@
                 font-size: 18px;
             }
         }
+
     </style>
+
 </head>
 
+
 <body>
-    <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
+<form id="form1" runat="server">
 
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fa-solid fa-droplet"></i>
-                </div>
 
-                <div class="logo-text">
-                    BloodConnect
-                </div>
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+
+                <i class="fa-solid fa-droplet"></i>
+
             </div>
 
-            <div class="menu-title">
-                User Menu
+            <div class="logo-text">
+                BloodConnect
             </div>
 
-            <a href="User_Dashboard.aspx" class="menu-link" id="dashboardLink">
-                <i class="fa-solid fa-house"></i>
-                <span>User Dashboard</span>
-            </a>
-
-            <a href="User_Profile.aspx" class="menu-link">
-                <i class="fa-solid fa-user"></i>
-                <span>My Profile</span>
-            </a>
-
-            <a href="User_EditProfile.aspx" class="menu-link">
-                <i class="fa-solid fa-user-pen"></i>
-                <span>Edit Profile</span>
-            </a>
-
-            <a href="User_DonorSearch.aspx" class="menu-link">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Smart Donor Search</span>
-            </a>
-
-            <a href="User_SearchResults.aspx" class="menu-link">
-                <i class="fa-solid fa-list"></i>
-                <span>Search Results</span>
-            </a>
-
-            <a href="User_DonorProfile.aspx" class="menu-link">
-                <i class="fa-solid fa-id-card"></i>
-                <span>Donor Profile</span>
-            </a>
-
-            <a href="User_NearbyEmergency.aspx" class="menu-link">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <span>Emergency Blood Request</span>
-            </a>
-
-            <a href="User_CreateRequest.aspx" class="menu-link">
-                <i class="fa-solid fa-plus-circle"></i>
-                <span>Create Blood Request</span>
-            </a>
-
-            <a href="User_MyRequests.aspx" class="menu-link">
-                <i class="fa-solid fa-file-medical"></i>
-                <span>My Requests</span>
-            </a>
-
-            <a href="User_RequestDetails.aspx" class="menu-link">
-                <i class="fa-solid fa-file-lines"></i>
-                <span>Request Details</span>
-            </a>
-
-            <a href="User_RequestStatus.aspx" class="menu-link">
-                <i class="fa-solid fa-chart-line"></i>
-                <span>Request Status Tracking</span>
-            </a>
-
-            <a href="User_Notifications.aspx" class="menu-link">
-                <i class="fa-solid fa-bell"></i>
-                <span>Notifications</span>
-            </a>
-
-            <hr />
-
-            <a href="User_Logout.aspx" class="menu-link logout-link">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
-            </a>
-
-        </aside>
+        </div>
 
 
-        <!-- MAIN AREA -->
-        <div class="main-area">
 
-            <!-- TOP HEADER -->
-            <header class="top-header">
+        <div class="menu-title">
+            User Menu
+        </div>
 
-                <h1 class="page-title">
-                    <asp:ContentPlaceHolder ID="PageHeading" runat="server">
-                        User Dashboard
-                    </asp:ContentPlaceHolder>
-                </h1>
 
-                <div class="user-area">
 
-                    <a href="User_Notifications.aspx" class="notification">
-                        <i class="fa-solid fa-bell"></i>
-                        <span class="notification-dot"></span>
-                    </a>
+        <!-- DASHBOARD -->
 
-                    <div class="profile-area">
+        <a href="User_Dashboard.aspx"
+           class="<%= GetActiveClass("User_Dashboard.aspx") %>">
 
-                        <asp:Image ID="UserImage"
-                            runat="server"
-                            CssClass="profile-image"
-                            ImageUrl="~/Images/default-profile.png" />
+            <i class="fa-solid fa-house"></i>
 
-                        <div class="profile-info">
-                            <div class="profile-name">
-                                <asp:Label ID="lblUserName"
-                                    runat="server"
-                                    Text="User Name">
-                                </asp:Label>
-                            </div>
+            <span>User Dashboard</span>
 
-                            <div class="profile-role">
-                                Blood Seeker
-                            </div>
+        </a>
+
+
+
+        <!-- PROFILE -->
+
+        <a href="User_Profile.aspx"
+           class="<%= GetActiveClass("User_Profile.aspx") %>">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>My Profile</span>
+
+        </a>
+
+
+
+        <!-- EDIT PROFILE -->
+
+        <a href="User_EditProfile.aspx"
+           class="<%= GetActiveClass("User_EditProfile.aspx") %>">
+
+            <i class="fa-solid fa-user-pen"></i>
+
+            <span>Edit Profile</span>
+
+        </a>
+
+
+
+        <!-- DONOR SEARCH -->
+
+        <a href="User_DonorSearch.aspx"
+           class="<%= GetActiveClass("User_DonorSearch.aspx") %>">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <span>Smart Donor Search</span>
+
+        </a>
+
+
+
+        <!-- SEARCH RESULTS -->
+
+        <a href="User_SearchResults.aspx"
+           class="<%= GetActiveClass("User_SearchResults.aspx") %>">
+
+            <i class="fa-solid fa-list"></i>
+
+            <span>Search Results</span>
+
+        </a>
+
+
+
+        <!-- DONOR PROFILE -->
+
+        <a href="User_DonorProfile.aspx"
+           class="<%= GetActiveClass("User_DonorProfile.aspx") %>">
+
+            <i class="fa-solid fa-id-card"></i>
+
+            <span>Donor Profile</span>
+
+        </a>
+
+
+
+        <!-- EMERGENCY -->
+
+        <a href="User_NearbyEmergency.aspx"
+           class="<%= GetActiveClass("User_NearbyEmergency.aspx") %>">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <span>Emergency Blood Request</span>
+
+        </a>
+
+
+
+        <!-- CREATE REQUEST -->
+
+        <a href="User_CreateRequest.aspx"
+           class="<%= GetActiveClass("User_CreateRequest.aspx") %>">
+
+            <i class="fa-solid fa-plus-circle"></i>
+
+            <span>Create Blood Request</span>
+
+        </a>
+
+
+
+        <!-- MY REQUESTS -->
+
+        <a href="User_MyRequests.aspx"
+           class="<%= GetActiveClass("User_MyRequests.aspx") %>">
+
+            <i class="fa-solid fa-file-medical"></i>
+
+            <span>My Requests</span>
+
+        </a>
+
+
+
+        <!-- REQUEST DETAILS -->
+
+        <a href="User_RequestDetails.aspx"
+           class="<%= GetActiveClass("User_RequestDetails.aspx") %>">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            <span>Request Details</span>
+
+        </a>
+
+
+
+        <!-- REQUEST STATUS -->
+
+        <a href="User_RequestStatus.aspx"
+           class="<%= GetActiveClass("User_RequestStatus.aspx") %>">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <span>Request Status Tracking</span>
+
+        </a>
+
+
+
+        <!-- NOTIFICATIONS -->
+
+        <a href="User_Notifications.aspx"
+           class="<%= GetActiveClass("User_Notifications.aspx") %>">
+
+            <i class="fa-solid fa-bell"></i>
+
+            <span>Notifications</span>
+
+        </a>
+
+
+
+        <hr />
+
+
+
+        <!-- LOGOUT -->
+
+        <a href="User_Logout.aspx"
+           class="<%= GetActiveClass("User_Logout.aspx") %> logout-link">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+
+    </aside>
+
+
+
+    <!-- ================= MAIN AREA ================= -->
+
+    <div class="main-area">
+
+
+        <!-- TOP HEADER -->
+
+        <header class="top-header">
+
+
+            <!-- PAGE TITLE -->
+
+            <h1 class="page-title">
+
+                <asp:ContentPlaceHolder ID="PageHeading"
+                    runat="server">
+
+                    User Dashboard
+
+                </asp:ContentPlaceHolder>
+
+            </h1>
+
+
+
+            <!-- USER AREA -->
+
+            <div class="user-area">
+
+
+                <!-- NOTIFICATION -->
+
+                <a href="User_Notifications.aspx"
+                   class="notification">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </a>
+
+
+
+                <!-- PROFILE -->
+
+                <div class="profile-area">
+
+
+                    <!-- FIRST LETTER -->
+
+                    <div class="profile-image">
+
+                        <asp:Label ID="lblUserInitial"
+                            runat="server">
+                        </asp:Label>
+
+                    </div>
+
+
+
+                    <!-- NAME -->
+
+                    <div class="profile-info">
+
+                        <div class="profile-name">
+
+                            <asp:Label ID="lblUserName"
+                                runat="server">
+                            </asp:Label>
+
+                        </div>
+
+
+                        <div class="profile-role">
+
+                            Blood Seeker
+
                         </div>
 
                     </div>
 
+
                 </div>
 
-            </header>
+
+            </div>
 
 
-            <!-- PAGE CONTENT -->
-            <main class="content-area">
+        </header>
 
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1"
-                    runat="server">
-                </asp:ContentPlaceHolder>
 
-            </main>
 
-        </div>
+        <!-- ================= PAGE CONTENT ================= -->
 
-    </form>
+        <main class="content-area">
 
-    <script>
-        // Highlight current page
-        document.addEventListener("DOMContentLoaded", function () {
+            <asp:ContentPlaceHolder
+                ID="ContentPlaceHolder1"
+                runat="server">
 
-            var currentPage =
-                window.location.pathname.split("/").pop().toLowerCase();
+            </asp:ContentPlaceHolder>
 
-            var links =
-                document.querySelectorAll(".menu-link");
+        </main>
 
-            links.forEach(function (link) {
 
-                var href =
-                    link.getAttribute("href");
+    </div>
 
-                if (href &&
-                    href.toLowerCase() === currentPage) {
 
-                    link.classList.add("active");
-                }
-
-            });
-
-        });
-    </script>
+</form>
 
 </body>
+
 </html>

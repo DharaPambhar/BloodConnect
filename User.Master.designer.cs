@@ -51,13 +51,13 @@ namespace BloodConnect
         protected global::System.Web.UI.WebControls.ContentPlaceHolder PageHeading;
 
         /// <summary>
-        /// UserImage control.
+        /// lblUserInitial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UserImage;
+        protected global::System.Web.UI.WebControls.Label lblUserInitial;
 
         /// <summary>
         /// lblUserName control.
