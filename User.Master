@@ -1,5 +1,4 @@
-﻿
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.Master.cs" Inherits="BloodConnect.User" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.Master.cs" Inherits="BloodConnect.User" %>
 
 <!DOCTYPE html>
 
@@ -564,8 +563,8 @@
 
         <!-- LOGOUT -->
 
-        <a href="User_Logout.aspx"
-           class="<%= GetActiveClass("User_Logout.aspx") %> logout-link">
+        <a href="Logout.aspx"
+           class="menu-link logout-link">
 
             <i class="fa-solid fa-right-from-bracket"></i>
 

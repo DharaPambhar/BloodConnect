@@ -95,9 +95,18 @@
     <Content Include="Logout.aspx" />
     <Content Include="NearbyEmergency.aspx" />
     <Content Include="Registration.aspx" />
+    <Content Include="User_CreateRequest.aspx" />
     <Content Include="User_Dashboard.aspx" />
+    <Content Include="User_DonorProfile.aspx" />
+    <Content Include="User_DonorSearch.aspx" />
     <Content Include="User_EditProfile.aspx" />
+    <Content Include="User_MyRequests.aspx" />
+    <Content Include="User_NearbyEmergency.aspx" />
+    <Content Include="User_Notifications.aspx" />
     <Content Include="User_Profile.aspx" />
+    <Content Include="User_RequestDetails.aspx" />
+    <Content Include="User_RequestStatus.aspx" />
+    <Content Include="User_SearchResults.aspx" />
     <Content Include="VerifyAccount.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -288,12 +297,33 @@
     <Compile Include="User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
     </Compile>
+    <Compile Include="User_CreateRequest.aspx.cs">
+      <DependentUpon>User_CreateRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_CreateRequest.aspx.designer.cs">
+      <DependentUpon>User_CreateRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User_Dashboard.aspx.cs">
       <DependentUpon>User_Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="User_Dashboard.aspx.designer.cs">
       <DependentUpon>User_Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_DonorProfile.aspx.cs">
+      <DependentUpon>User_DonorProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_DonorProfile.aspx.designer.cs">
+      <DependentUpon>User_DonorProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_DonorSearch.aspx.cs">
+      <DependentUpon>User_DonorSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_DonorSearch.aspx.designer.cs">
+      <DependentUpon>User_DonorSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="User_EditProfile.aspx.cs">
       <DependentUpon>User_EditProfile.aspx</DependentUpon>
@@ -302,12 +332,54 @@
     <Compile Include="User_EditProfile.aspx.designer.cs">
       <DependentUpon>User_EditProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User_MyRequests.aspx.cs">
+      <DependentUpon>User_MyRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_MyRequests.aspx.designer.cs">
+      <DependentUpon>User_MyRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_NearbyEmergency.aspx.cs">
+      <DependentUpon>User_NearbyEmergency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_NearbyEmergency.aspx.designer.cs">
+      <DependentUpon>User_NearbyEmergency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_Notifications.aspx.cs">
+      <DependentUpon>User_Notifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Notifications.aspx.designer.cs">
+      <DependentUpon>User_Notifications.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User_Profile.aspx.cs">
       <DependentUpon>User_Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="User_Profile.aspx.designer.cs">
       <DependentUpon>User_Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_RequestDetails.aspx.cs">
+      <DependentUpon>User_RequestDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_RequestDetails.aspx.designer.cs">
+      <DependentUpon>User_RequestDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_RequestStatus.aspx.cs">
+      <DependentUpon>User_RequestStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_RequestStatus.aspx.designer.cs">
+      <DependentUpon>User_RequestStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_SearchResults.aspx.cs">
+      <DependentUpon>User_SearchResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_SearchResults.aspx.designer.cs">
+      <DependentUpon>User_SearchResults.aspx</DependentUpon>
     </Compile>
     <Compile Include="VerifyAccount.aspx.cs">
       <DependentUpon>VerifyAccount.aspx</DependentUpon>
