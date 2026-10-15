@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace BloodConnect
 {
@@ -35,124 +37,119 @@ namespace BloodConnect
                 lastName = "Shah";
             }
 
-            string fullName = (firstName + " " + lastName).Trim();
-
             if (string.IsNullOrWhiteSpace(email))
             {
                 email = "rahul.shah@example.com";
             }
 
+            string fullName = (firstName + " " + lastName).Trim();
+
+            // Profile details
             txtFullName.Text = fullName;
             txtEmail.Text = email;
-
             lblProfileName.Text = fullName;
 
-            lblInitial.Text =
-                firstName.Substring(0, 1).ToUpper();
-
+            // Personal details
             txtDOB.Text = "1992-05-14";
 
-            ddlGender.SelectedValue = "Male";
+            SetSelectedValue(ddlGender, "Male");
 
             txtPhone.Text = "+91 9876543245";
 
+            // Address details
             txtAddress1.Text = "A-402, Shyam Residency";
-
             txtAddress2.Text = "Near SG Highway, Bodakdev";
-
             txtCity.Text = "Ahmedabad";
-
-            ddlState.SelectedValue = "Gujarat";
-
+            SetSelectedValue(ddlState, "Gujarat");
             txtPincode.Text = "380054";
+            SetSelectedValue(ddlCountry, "India");
 
-            ddlCountry.SelectedValue = "India";
-
-            ddlBloodGroup.SelectedValue = "O+";
-
-            ddlRadius.SelectedValue = "10";
-
+            // Blood donation preferences
+            SetSelectedValue(ddlBloodGroup, "O+");
+            SetSelectedValue(ddlRadius, "10");
             txtPrimaryLocation.Text = "Ahmedabad";
+            SetSelectedValue(ddlUrgency, "Normal");
+            SetSelectedValue(
+                ddlLocationVisibility,
+                "Approximate Area"
+            );
+        }
 
-            ddlUrgency.SelectedValue = "Normal";
-
-            ddlLocationVisibility.SelectedValue =
-                "Approximate Area";
+        private void SetSelectedValue(
+            DropDownList dropdown,
+            string value)
+        {
+            if (dropdown != null &&
+                dropdown.Items.FindByValue(value) != null)
+            {
+                dropdown.SelectedValue = value;
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtFullName.Text))
             {
-                ShowMessage(
-                    "Please enter your full name.",
-                    false);
-
+                ShowMessage("Please enter your full name.", false);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPhone.Text))
             {
-                ShowMessage(
-                    "Please enter your phone number.",
-                    false);
-
+                ShowMessage("Please enter your phone number.", false);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtAddress1.Text))
             {
-                ShowMessage(
-                    "Please enter Address Line 1.",
-                    false);
-
+                ShowMessage("Please enter Address Line 1.", false);
                 return;
             }
 
             // Update session name
-            string fullName =
-                txtFullName.Text.Trim();
+            string fullName = txtFullName.Text.Trim();
 
-            string[] nameParts =
-                fullName.Split(
-                    new char[] { ' ' },
-                    StringSplitOptions.RemoveEmptyEntries);
+            string[] nameParts = fullName.Split(
+                new char[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries
+            );
 
             if (nameParts.Length > 0)
             {
                 Session["FirstName"] = nameParts[0];
-            }
 
-            if (nameParts.Length > 1)
-            {
-                Session["LastName"] =
-                    string.Join(
+                string lastName = "";
+
+                if (nameParts.Length > 1)
+                {
+                    lastName = string.Join(
                         " ",
                         nameParts,
                         1,
-                        nameParts.Length - 1);
+                        nameParts.Length - 1
+                    );
+                }
+
+                Session["LastName"] = lastName;
             }
 
-            ShowMessage(
-                "Profile updated successfully.",
-                true);
+            // Update profile name on page
+            lblProfileName.Text = fullName;
+
+            ShowMessage("Profile updated successfully.", true);
         }
 
-        private void ShowMessage(
-            string message,
-            bool success)
+        private void ShowMessage(string message, bool success)
         {
             lblMessage.Text = message;
 
             if (success)
             {
-                lblMessage.CssClass =
-                    "message success";
+                lblMessage.CssClass = "message success";
             }
             else
             {
-                lblMessage.CssClass =
-                    "message error";
+                lblMessage.CssClass = "message error";
             }
 
             lblMessage.Visible = true;

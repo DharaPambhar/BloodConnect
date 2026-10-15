@@ -112,6 +112,7 @@
     <Content Include="images\DonorDashboard_image.png" />
     <Content Include="images\home_image.png" />
     <Content Include="images\login_image.png" />
+    <Content Include="images\profile.png" />
     <Content Include="images\register_image.png" />
     <Content Include="images\verify_image.png" />
     <Content Include="Login.aspx" />

@@ -28,20 +28,34 @@
         gap: 20px;
     }
 
-    .donor-avatar {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        background: #E8DEF7;
-        color: #684BA2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 25px;
-        font-weight: 700;
-        border: 3px solid #F2EAFB;
-        flex-shrink: 0;
-    }
+    /* ================= DONOR PROFILE IMAGE ================= */
+
+    
+.donor-avatar {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    min-height: 90px;
+    border-radius: 50%;
+    background: #E8DEF7;
+    border: 3px solid #F2EAFB;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.donor-profile-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+}
+
 
     .profile-info {
         flex: 1;
@@ -104,7 +118,6 @@
         font-weight: bold;
     }
 
-
     /* ================= ACTIONS ================= */
 
     .profile-actions {
@@ -147,7 +160,6 @@
         color: #8F2638;
     }
 
-
     /* ================= CONTENT GRID ================= */
 
     .content-grid {
@@ -179,7 +191,6 @@
         color: #8F2638;
     }
 
-
     /* ================= INFO ROWS ================= */
 
     .info-row {
@@ -205,7 +216,6 @@
         font-weight: 600;
         text-align: right;
     }
-
 
     /* ================= STATS ================= */
 
@@ -234,7 +244,6 @@
         font-size: 8px;
     }
 
-
     /* ================= AVAILABILITY ================= */
 
     .availability-box {
@@ -256,6 +265,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
     }
 
     .availability-title {
@@ -269,7 +279,6 @@
         color: #6C8272;
         font-size: 9px;
     }
-
 
     /* ================= SAFETY ================= */
 
@@ -290,8 +299,8 @@
         color: #65809C;
         font-size: 13px;
         margin-top: 2px;
+        flex-shrink: 0;
     }
-
 
     /* ================= RESPONSIVE ================= */
 
@@ -338,20 +347,24 @@
 
 <div class="donor-profile-page">
 
-
     <!-- ================= DONOR PROFILE SUMMARY ================= -->
 
     <div class="profile-banner">
 
         <div class="profile-main">
 
-
-            <!-- DONOR AVATAR -->
+            <!-- DONOR PROFILE IMAGE -->
 
             <div class="donor-avatar">
-                AP
-            </div>
 
+                <asp:Image
+                    ID="DonorProfileImage"
+                    runat="server"
+                    ImageUrl="~/Images/profile.png"
+                    AlternateText="Donor Profile Photo"
+                    CssClass="donor-profile-image" />
+
+            </div>
 
             <!-- DONOR INFORMATION -->
 
@@ -364,59 +377,39 @@
                     </div>
 
                     <span class="verified-badge">
-
                         <i class="fa-solid fa-circle-check"></i>
                         Verified
-
                     </span>
 
                 </div>
 
-
                 <div class="profile-details">
 
-
                     <span class="blood-pill">
-
                         <i class="fa-solid fa-droplet"></i>
                         O+
-
                     </span>
 
-
                     <span class="detail-item">
-
                         <i class="fa-solid fa-location-dot"></i>
-
                         Navrangpura, Ahmedabad
-
                     </span>
-
 
                     <span class="detail-item">
-
                         <i class="fa-solid fa-ruler-horizontal"></i>
-
                         1.8 km away
-
                     </span>
-
 
                     <span class="available-pill">
-
                         <i class="fa-solid fa-circle-check"></i>
-
                         Available Now
-
                     </span>
-
 
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- ================= ACTION BUTTONS ================= -->
 
@@ -426,17 +419,14 @@
                class="request-btn">
 
                 <i class="fa-solid fa-paper-plane"></i>
-
                 Send Blood Request
 
             </a>
-
 
             <a href="User_SearchResults.aspx"
                class="back-btn">
 
                 <i class="fa-solid fa-arrow-left"></i>
-
                 Back to Search Results
 
             </a>
@@ -445,175 +435,93 @@
 
     </div>
 
-
     <!-- ================= CONTENT ================= -->
 
     <div class="content-grid">
-
 
         <!-- ================= DONOR INFORMATION ================= -->
 
         <div class="info-card">
 
             <div class="card-title">
-
                 <i class="fa-solid fa-user"></i>
-
                 Donor Information
-
             </div>
 
-
             <div class="info-row">
-
-                <span class="info-label">
-                    Full Name
-                </span>
-
-                <span class="info-value">
-                    Ananya Patel
-                </span>
-
+                <span class="info-label">Full Name</span>
+                <span class="info-value">Ananya Patel</span>
             </div>
 
-
             <div class="info-row">
-
-                <span class="info-label">
-                    Blood Group
-                </span>
-
-                <span class="info-value">
-                    O+
-                </span>
-
+                <span class="info-label">Blood Group</span>
+                <span class="info-value">O+</span>
             </div>
 
-
             <div class="info-row">
-
-                <span class="info-label">
-                    Location
-                </span>
-
-                <span class="info-value">
-                    Navrangpura, Ahmedabad
-                </span>
-
+                <span class="info-label">Location</span>
+                <span class="info-value">Navrangpura, Ahmedabad</span>
             </div>
 
-
             <div class="info-row">
-
-                <span class="info-label">
-                    Distance
-                </span>
-
-                <span class="info-value">
-                    1.8 km
-                </span>
-
+                <span class="info-label">Distance</span>
+                <span class="info-value">1.8 km</span>
             </div>
 
-
             <div class="info-row">
-
-                <span class="info-label">
-                    Verification
-                </span>
-
-                <span class="info-value"
-                      style="color:#25814A;">
-
+                <span class="info-label">Verification</span>
+                <span class="info-value" style="color:#25814A;">
                     <i class="fa-solid fa-circle-check"></i>
                     Verified Donor
-
                 </span>
-
             </div>
 
         </div>
-
 
         <!-- ================= DONATION STATS ================= -->
 
         <div class="info-card">
 
             <div class="card-title">
-
                 <i class="fa-solid fa-chart-simple"></i>
-
                 Donation Statistics
-
             </div>
-
 
             <div class="stats-grid">
 
                 <div class="stat-box">
-
-                    <div class="stat-number">
-                        12
-                    </div>
-
-                    <div class="stat-label">
-                        Total Donations
-                    </div>
-
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Total Donations</div>
                 </div>
 
-
                 <div class="stat-box">
-
-                    <div class="stat-number">
-                        8
-                    </div>
-
-                    <div class="stat-label">
-                        Successful
-                    </div>
-
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Successful</div>
                 </div>
 
-
                 <div class="stat-box">
-
-                    <div class="stat-number">
-                        4
-                    </div>
-
-                    <div class="stat-label">
-                        This Year
-                    </div>
-
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">This Year</div>
                 </div>
 
             </div>
 
         </div>
 
-
         <!-- ================= AVAILABILITY ================= -->
 
         <div class="info-card">
 
             <div class="card-title">
-
                 <i class="fa-solid fa-clock"></i>
-
                 Current Availability
-
             </div>
-
 
             <div class="availability-box">
 
                 <div class="availability-icon">
-
                     <i class="fa-solid fa-check"></i>
-
                 </div>
-
 
                 <div>
 
@@ -632,62 +540,33 @@
 
         </div>
 
-
         <!-- ================= DONOR LOCATION ================= -->
 
         <div class="info-card">
 
             <div class="card-title">
-
                 <i class="fa-solid fa-location-dot"></i>
-
                 Location Details
-
             </div>
 
-
             <div class="info-row">
-
-                <span class="info-label">
-                    Area
-                </span>
-
-                <span class="info-value">
-                    Navrangpura
-                </span>
-
+                <span class="info-label">Area</span>
+                <span class="info-value">Navrangpura</span>
             </div>
 
-
             <div class="info-row">
-
-                <span class="info-label">
-                    City
-                </span>
-
-                <span class="info-value">
-                    Ahmedabad
-                </span>
-
+                <span class="info-label">City</span>
+                <span class="info-value">Ahmedabad</span>
             </div>
 
-
             <div class="info-row">
-
-                <span class="info-label">
-                    Distance From You
-                </span>
-
-                <span class="info-value">
-                    1.8 km
-                </span>
-
+                <span class="info-label">Distance From You</span>
+                <span class="info-value">1.8 km</span>
             </div>
 
         </div>
 
     </div>
-
 
     <!-- ================= SAFETY NOTE ================= -->
 
@@ -697,9 +576,7 @@
 
         <div>
 
-            <strong>
-                Safety Note:
-            </strong>
+            <strong>Safety Note:</strong>
 
             Donor information is provided for blood donation
             coordination only. Please communicate securely through
@@ -709,7 +586,6 @@
         </div>
 
     </div>
-
 
 </div>
 

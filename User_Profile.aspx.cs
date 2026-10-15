@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Web.UI;
 
 namespace BloodConnect
 {
@@ -7,27 +8,14 @@ namespace BloodConnect
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Login vagar profile open na thay
-            if (Session["User"] == null)
-            {
-                Response.Redirect("Login.aspx");
-                return;
-            }
-
             if (!IsPostBack)
             {
-                // Login mathi session ma stored details
+                // Session mathi user details melavo
                 string firstName = Convert.ToString(Session["FirstName"]);
                 string lastName = Convert.ToString(Session["LastName"]);
                 string email = Convert.ToString(Session["User"]);
 
-                // Jo FirstName empty hoy
-                if (string.IsNullOrWhiteSpace(firstName))
-                {
-                    firstName = "User";
-                }
-
-                // Full name
+                // Full name taiyar karo
                 string fullName = (firstName + " " + lastName).Trim();
 
                 if (string.IsNullOrWhiteSpace(fullName))
@@ -35,17 +23,14 @@ namespace BloodConnect
                     fullName = "User";
                 }
 
-                // Profile ma name show
+                // Profile name
                 lblName.Text = fullName;
 
-                // Personal Information ma full name
+                // Personal information ma full name
                 lblFullName.Text = fullName;
 
-                // Email show
+                // Email address
                 lblEmail.Text = email;
-
-                // Avatar ma first name no first letter
-                lblInitial.Text = firstName.Substring(0, 1).ToUpper();
             }
         }
     }

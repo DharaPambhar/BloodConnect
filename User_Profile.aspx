@@ -6,7 +6,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 <style>
-
     .profile-page {
         padding: 30px;
         background: #f7f6fb;
@@ -70,19 +69,29 @@
         margin-bottom: 12px;
     }
 
+    /* PROFILE PHOTO - FULL CIRCLE */
+
     .avatar {
         width: 115px;
         height: 115px;
         border-radius: 50%;
         background: #e8defc;
-        color: #6b50b5;
+        border: 5px solid #f0ebff;
+        box-sizing: border-box;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 42px;
-        font-weight: 700;
-        border: 5px solid #f0ebff;
-        box-sizing: border-box;
+    }
+
+    .profile-image {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
     }
 
     .online-dot {
@@ -309,7 +318,6 @@
     }
 
     @media(max-width: 900px) {
-
         .profile-layout {
             grid-template-columns: 1fr;
         }
@@ -321,7 +329,6 @@
     }
 
     @media(max-width: 600px) {
-
         .profile-page {
             padding: 15px;
         }
@@ -333,605 +340,307 @@
             gap: 15px;
         }
     }
-
 </style>
 
 </asp:Content>
-
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <div class="profile-page">
 
-    <!-- PAGE HEADER -->
-
     <div class="page-top">
-
         <div class="page-title">
-
             <h1>My Profile</h1>
-
-            <p>
-                View and manage your personal information and account details.
-            </p>
-
+            <p>View and manage your personal information and account details.</p>
         </div>
 
         <a href="User_EditProfile.aspx" class="edit-btn">
             ✎ Edit Profile
         </a>
-
     </div>
-
 
     <div class="profile-layout">
 
-
         <!-- LEFT SIDE -->
-
         <div>
 
-
             <!-- PROFILE CARD -->
-
             <div class="card profile-card">
 
                 <div class="avatar-box">
-
                     <div class="avatar">
-
-                        <asp:Label ID="lblInitial"
-                            runat="server">
-                        </asp:Label>
-
+                        <asp:Image
+                            ID="UserProfileImage"
+                            runat="server"
+                            ImageUrl="~/Images/DonorProfile_image.png"
+                            AlternateText="User Profile Photo"
+                            CssClass="profile-image" />
                     </div>
 
                     <span class="online-dot"></span>
-
                 </div>
 
                 <br />
 
-                <span class="verified">
-                    ● VERIFIED USER
-                </span>
+                <span class="verified">● VERIFIED USER</span>
 
                 <h2>
-
-                    <asp:Label ID="lblName"
-                        runat="server">
-                    </asp:Label>
-
+                    <asp:Label ID="lblName" runat="server"></asp:Label>
                 </h2>
 
-                <div class="role">
-                    Blood Seeker
-                </div>
+                <div class="role">Blood Seeker</div>
 
-                <div class="small-info">
-                    📍 Ahmedabad
-                </div>
-
-                <div class="small-info">
-                    📅 Since Jan '26
-                </div>
+                <div class="small-info">📍 Ahmedabad</div>
+                <div class="small-info">📅 Since Jan '26</div>
 
             </div>
 
-
             <!-- PROFILE COMPLETION -->
-
             <div class="card">
-
                 <div class="completion-title">
-
                     <span>PROFILE COMPLETION</span>
-
                     <span>85%</span>
-
                 </div>
 
                 <div class="progress">
-
                     <div class="progress-bar"></div>
-
                 </div>
 
                 <div class="completion-text">
-
                     Complete your profile to increase trust
                     and visibility when requesting blood.
-
                 </div>
 
-                <a href="User_EditProfile.aspx"
-                   class="complete-btn">
-
+                <a href="User_EditProfile.aspx" class="complete-btn">
                     Complete Profile
-
                 </a>
-
             </div>
 
-
             <!-- QUICK ACTIONS -->
-
             <div class="card">
-
-                <div class="section-title">
-                    Quick Actions
-                </div>
+                <div class="section-title">Quick Actions</div>
 
                 <div class="quick-grid">
-
-                    <a href="User_DonorSearch.aspx"
-                       class="quick-btn">
-                        🔍<br />
-                        Smart Search
+                    <a href="User_DonorSearch.aspx" class="quick-btn">
+                        🔍<br />Smart Search
                     </a>
 
-                    <a href="User_CreateRequest.aspx"
-                       class="quick-btn">
-                        ➕<br />
-                        New Request
+                    <a href="User_CreateRequest.aspx" class="quick-btn">
+                        ➕<br />New Request
                     </a>
 
-                    <a href="User_MyRequests.aspx"
-                       class="quick-btn">
-                        🕒<br />
-                        My Requests
+                    <a href="User_MyRequests.aspx" class="quick-btn">
+                        🕒<br />My Requests
                     </a>
 
-                    <a href="User_Notifications.aspx"
-                       class="quick-btn">
-                        🔔<br />
-                        Alerts
+                    <a href="User_Notifications.aspx" class="quick-btn">
+                        🔔<br />Alerts
                     </a>
-
                 </div>
-
             </div>
 
         </div>
 
-
         <!-- RIGHT SIDE -->
-
         <div>
 
-
             <!-- PERSONAL INFORMATION -->
-
             <div class="card">
-
-                <div class="section-title">
-                    Personal Information
-                </div>
+                <div class="section-title">Personal Information</div>
 
                 <div class="info-grid">
 
-
                     <div class="info-item">
-
-                        <div class="info-label">
-                            Full Name
-                        </div>
-
+                        <div class="info-label">Full Name</div>
                         <div class="info-value">
-
-                            <asp:Label ID="lblFullName"
-                                runat="server">
-                            </asp:Label>
-
+                            <asp:Label ID="lblFullName" runat="server"></asp:Label>
                         </div>
-
                     </div>
 
-
                     <div class="info-item">
-
-                        <div class="info-label">
-                            Date of Birth
-                        </div>
-
-                        <div class="info-value">
-                            14 August 1992
-                        </div>
-
+                        <div class="info-label">Date of Birth</div>
+                        <div class="info-value">14 August 1992</div>
                     </div>
 
-
                     <div class="info-item">
-
-                        <div class="info-label">
-                            Gender
-                        </div>
-
-                        <div class="info-value">
-                            Female
-                        </div>
-
+                        <div class="info-label">Gender</div>
+                        <div class="info-value">Female</div>
                     </div>
 
-
                     <div class="info-item">
-
-                        <div class="info-label">
-                            Phone Number
-                        </div>
-
-                        <div class="info-value">
-                            +91 98765 43210
-                        </div>
-
+                        <div class="info-label">Phone Number</div>
+                        <div class="info-value">+91 98765 43210</div>
                     </div>
 
-
                     <div class="info-item">
-
-                        <div class="info-label">
-                            Email Address
-                        </div>
-
+                        <div class="info-label">Email Address</div>
                         <div class="info-value">
-
-                            <asp:Label ID="lblEmail"
-                                runat="server">
-                            </asp:Label>
-
+                            <asp:Label ID="lblEmail" runat="server"></asp:Label>
                         </div>
-
                     </div>
 
-
                     <div class="info-item">
-
-                        <div class="info-label">
-                            Address
-                        </div>
-
+                        <div class="info-label">Address</div>
                         <div class="info-value">
-                            402, Shivalik Highstreet,
-                            Satellite Road
+                            402, Shivalik Highstreet, Satellite Road
                         </div>
-
                     </div>
 
-
                     <div class="info-item">
-
-                        <div class="info-label">
-                            City / Location
-                        </div>
-
-                        <div class="info-value">
-                            Ahmedabad, Gujarat
-                        </div>
-
+                        <div class="info-label">City / Location</div>
+                        <div class="info-value">Ahmedabad, Gujarat</div>
                     </div>
 
-
                     <div class="info-item">
-
-                        <div class="info-label">
-                            PIN Code
-                        </div>
-
-                        <div class="info-value">
-                            380015
-                        </div>
-
+                        <div class="info-label">PIN Code</div>
+                        <div class="info-value">380015</div>
                     </div>
 
                 </div>
-
             </div>
-
 
             <!-- REQUIREMENT + EMERGENCY -->
-
             <div class="two-cards">
 
-
-                <!-- REQUIREMENT INFORMATION -->
-
                 <div class="card">
+                    <div class="section-title">Requirement Information</div>
 
-                    <div class="section-title">
-                        Requirement Information
+                    <div class="info-label">Required Blood Group</div>
+                    <span class="blood-pill">O+</span>
+
+                    <div class="info-item" style="margin-top:15px;">
+                        <div class="info-label">Primary Location</div>
+                        <div class="info-value">Ahmedabad</div>
                     </div>
 
-                    <div class="info-label">
-                        Required Blood Group
+                    <div class="info-item" style="margin-top:10px;">
+                        <div class="info-label">Search Radius</div>
+                        <div class="info-value">25 km</div>
                     </div>
 
-                    <span class="blood-pill">
-                        O+
-                    </span>
-
-                    <div class="info-item"
-                         style="margin-top:15px;">
-
-                        <div class="info-label">
-                            Primary Location
-                        </div>
-
-                        <div class="info-value">
-                            Ahmedabad
-                        </div>
-
-                    </div>
-
-                    <div class="info-item"
-                         style="margin-top:10px;">
-
-                        <div class="info-label">
-                            Search Radius
-                        </div>
-
-                        <div class="info-value">
-                            25 km
-                        </div>
-
-                    </div>
-
-                    <a href="User_EditProfile.aspx"
-                       class="card-link">
-
+                    <a href="User_EditProfile.aspx" class="card-link">
                         Edit Preferences →
-
                     </a>
-
                 </div>
 
-
-                <!-- EMERGENCY CONTACT -->
-
                 <div class="card">
-
-                    <div class="section-title">
-                        Emergency Contact
-                    </div>
+                    <div class="section-title">Emergency Contact</div>
 
                     <div class="info-item">
-
-                        <div class="info-label">
-                            Name
-                        </div>
-
-                        <div class="info-value">
-                            Neha Shah
-                        </div>
-
+                        <div class="info-label">Name</div>
+                        <div class="info-value">Neha Shah</div>
                     </div>
 
-                    <div class="info-item"
-                         style="margin-top:10px;">
-
-                        <div class="info-label">
-                            Relationship
-                        </div>
-
-                        <div class="info-value">
-                            Sister
-                        </div>
-
+                    <div class="info-item" style="margin-top:10px;">
+                        <div class="info-label">Relationship</div>
+                        <div class="info-value">Sister</div>
                     </div>
 
-                    <div class="info-item"
-                         style="margin-top:10px;">
-
-                        <div class="info-label">
-                            Phone Number
-                        </div>
-
-                        <div class="info-value">
-                            +91 98765 00011
-                        </div>
-
+                    <div class="info-item" style="margin-top:10px;">
+                        <div class="info-label">Phone Number</div>
+                        <div class="info-value">+91 98765 00011</div>
                     </div>
 
-                    <a href="User_EditProfile.aspx"
-                       class="card-link">
-
+                    <a href="User_EditProfile.aspx" class="card-link">
                         ✎ Edit Contact
-
                     </a>
-
                 </div>
 
             </div>
-
 
             <!-- ACCOUNT STATUS + VERIFICATIONS -->
-
             <div class="two-cards">
 
-
                 <div class="card">
-
-                    <div class="section-title">
-                        Account Status
-                    </div>
+                    <div class="section-title">Account Status</div>
 
                     <div class="privacy-item">
-
                         <span>Account ID</span>
-
-                        <strong>
-                            BC-USR-10245
-                        </strong>
-
+                        <strong>BC-USR-10245</strong>
                     </div>
 
                     <div class="privacy-item">
-
                         <span>Account Type</span>
-
-                        <strong>
-                            Blood Seeker
-                        </strong>
-
+                        <strong>Blood Seeker</strong>
                     </div>
 
                     <div class="privacy-item">
-
                         <span>Current Status</span>
-
-                        <span class="status-active">
-                            ● Active
-                        </span>
-
+                        <span class="status-active">● Active</span>
                     </div>
 
                     <div class="privacy-item">
-
                         <span>Last Updated</span>
-
-                        <strong>
-                            2 days ago
-                        </strong>
-
+                        <strong>2 days ago</strong>
                     </div>
-
                 </div>
 
-
                 <div class="card">
-
-                    <div class="section-title">
-                        Verifications
-                    </div>
+                    <div class="section-title">Verifications</div>
 
                     <div class="privacy-item">
-
                         <span>Email Address</span>
-
-                        <span class="verify">
-                            ✓ Verified
-                        </span>
-
+                        <span class="verify">✓ Verified</span>
                     </div>
 
                     <div class="privacy-item">
-
                         <span>Phone Number</span>
-
-                        <span class="verify">
-                            ✓ Verified
-                        </span>
-
+                        <span class="verify">✓ Verified</span>
                     </div>
 
                     <div class="privacy-item">
-
                         <span>Govt. ID Proof</span>
-
-                        <span class="verify-now">
-                            Verify Now
-                        </span>
-
+                        <span class="verify-now">Verify Now</span>
                     </div>
-
                 </div>
 
             </div>
 
-
             <!-- PRIVACY + SECURITY -->
-
             <div class="two-cards">
 
-
                 <div class="card">
-
-                    <div class="section-title">
-                        Privacy & Visibility
-                    </div>
+                    <div class="section-title">Privacy &amp; Visibility</div>
 
                     <div class="privacy-item">
-
                         <span>Profile</span>
-
-                        <strong>
-                            Limited
-                        </strong>
-
+                        <strong>Limited</strong>
                     </div>
 
                     <div class="privacy-item">
-
                         <span>Contact Info</span>
-
-                        <strong>
-                            Private
-                        </strong>
-
+                        <strong>Private</strong>
                     </div>
 
                     <div class="privacy-item">
-
                         <span>Location</span>
-
-                        <strong>
-                            Approximate
-                        </strong>
-
+                        <strong>Approximate</strong>
                     </div>
 
-                    <a href="#" class="card-link">
-                        Manage Privacy →
-                    </a>
-
+                    <a href="#" class="card-link">Manage Privacy →</a>
                 </div>
 
-
                 <div class="card">
-
-                    <div class="section-title">
-                        Account Security
-                    </div>
+                    <div class="section-title">Account Security</div>
 
                     <div class="security-item">
-
                         <span>Password</span>
-
-                        <strong>
-                            Changed 30d ago
-                        </strong>
-
+                        <strong>Changed 30d ago</strong>
                     </div>
 
                     <div class="security-item">
-
                         <span>Two-Factor (2FA)</span>
-
-                        <strong class="verify">
-                            Enabled
-                        </strong>
-
+                        <strong class="verify">Enabled</strong>
                     </div>
 
                     <div class="security-item">
-
                         <span>Login Alerts</span>
-
-                        <strong class="verify">
-                            Enabled
-                        </strong>
-
+                        <strong class="verify">Enabled</strong>
                     </div>
 
-                    <a href="#" class="card-link">
-                        Change Password
-                    </a>
-
+                    <a href="#" class="card-link">Change Password</a>
                     &nbsp;&nbsp;
-
-                    <a href="#" class="card-link">
-                        Security Settings
-                    </a>
-
+                    <a href="#" class="card-link">Security Settings</a>
                 </div>
 
             </div>
@@ -940,31 +649,19 @@
 
     </div>
 
-
     <!-- BOTTOM -->
-
     <div class="bottom-banner">
-
         <div>
-
-            <h3>
-                Want to update your information?
-            </h3>
-
+            <h3>Want to update your information?</h3>
             <p>
                 Keep your profile current to ensure seamless
                 communication during emergencies.
             </p>
-
         </div>
 
-        <a href="User_EditProfile.aspx"
-           class="red-btn">
-
+        <a href="User_EditProfile.aspx" class="red-btn">
             ✎ Edit Profile Details
-
         </a>
-
     </div>
 
 </div>

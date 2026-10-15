@@ -106,21 +106,32 @@
         text-align: center;
     }
 
-    .profile-photo {
-        width: 95px;
-        height: 95px;
-        margin: 0 auto 12px;
-        border-radius: 50%;
-        background: #eee9ff;
-        color: #7050ad;
-        border: 3px solid #f3efff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 34px;
-        font-weight: 700;
-        position: relative;
-    }
+    
+/* PROFILE PHOTO - FULL CIRCLE */
+
+.profile-photo {
+    width: 95px;
+    height: 95px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: #eee9ff;
+    border: 3px solid #f3efff;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.profile-photo .profile-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
 
     .edit-pencil {
         position: absolute;
@@ -135,6 +146,7 @@
         align-items: center;
         justify-content: center;
         font-size: 11px;
+        z-index: 2;
     }
 
     .photo-name {
@@ -572,12 +584,7 @@
         </p>
     </div>
 
-
-    <asp:Label ID="lblMessage"
-        runat="server"
-        Visible="false">
-    </asp:Label>
-
+    <asp:Label ID="lblMessage" runat="server" Visible="false"></asp:Label>
 
     <div class="edit-layout">
 
@@ -615,10 +622,12 @@
 
                     <div class="profile-photo">
 
-                        <asp:Label ID="lblInitial"
-                            runat="server">
-                            R
-                        </asp:Label>
+                        <asp:Image
+                            ID="EditProfileImage"
+                            runat="server"
+                            ImageUrl="~/Images/DonorProfile_image.png"
+                            AlternateText="User Profile Photo"
+                            CssClass="profile-image" />
 
                         <div class="edit-pencil">
                             <i class="fa-solid fa-pencil"></i>
@@ -639,13 +648,11 @@
 
                     <div class="photo-buttons">
 
-                        <button type="button"
-                                class="remove-btn">
+                        <button type="button" class="remove-btn">
                             Remove
                         </button>
 
-                        <button type="button"
-                                class="upload-btn">
+                        <button type="button" class="upload-btn">
                             Upload New
                         </button>
 
@@ -668,41 +675,25 @@
 
                 <div class="quick-grid">
 
-                    <a href="User_Profile.aspx"
-                       class="quick-action">
-
+                    <a href="User_Profile.aspx" class="quick-action">
                         <i class="fa-solid fa-user"></i>
                         <span>View Profile</span>
-
                     </a>
 
-
-                    <a href="User_DonorSearch.aspx"
-                       class="quick-action">
-
+                    <a href="User_DonorSearch.aspx" class="quick-action">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span>Find Donor</span>
-
                     </a>
 
-
-                    <a href="User_MyRequests.aspx"
-                       class="quick-action">
-
+                    <a href="User_MyRequests.aspx" class="quick-action">
                         <i class="fa-solid fa-clock-rotate-left"></i>
                         <span>My Requests</span>
-
                     </a>
 
-
-                    <a href="User_Notifications.aspx"
-                       class="quick-action">
-
+                    <a href="User_Notifications.aspx" class="quick-action">
                         <span class="alert-dot"></span>
-
                         <i class="fa-solid fa-bell"></i>
                         <span>Alerts</span>
-
                     </a>
 
                 </div>
@@ -714,119 +705,43 @@
 
         <div class="right-column">
 
-
             <div class="form-card">
 
                 <div class="form-card-header">
-
-                    <h3>
-                        Personal Information
-                    </h3>
-
-                    <p>
-                        Keep your personal details up to date.
-                    </p>
-
+                    <h3>Personal Information</h3>
+                    <p>Keep your personal details up to date.</p>
                 </div>
-
 
                 <div class="form-grid">
 
-
                     <div class="form-group">
-
-                        <label>
-                            Full Name <span class="required">*</span>
-                        </label>
-
-                        <asp:TextBox ID="txtFullName"
-                            runat="server"
-                            CssClass="form-control">
-                        </asp:TextBox>
-
+                        <label>Full Name <span class="required">*</span></label>
+                        <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            Date of Birth
-                        </label>
-
-                        <asp:TextBox ID="txtDOB"
-                            runat="server"
-                            CssClass="form-control"
-                            TextMode="Date">
-                        </asp:TextBox>
-
+                        <label>Date of Birth</label>
+                        <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            Gender
-                        </label>
-
-                        <asp:DropDownList ID="ddlGender"
-                            runat="server"
-                            CssClass="form-control">
-
-                            <asp:ListItem Text="Male"
-                                Value="Male">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Female"
-                                Value="Female">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Other"
-                                Value="Other">
-                            </asp:ListItem>
-
+                        <label>Gender</label>
+                        <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
+                            <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
+                            <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
                         </asp:DropDownList>
-
                     </div>
-
 
                     <div class="form-group">
-
-                        <label>
-                            Phone Number
-
-                            <span class="verified-pill">
-                                ✓ Verified
-                            </span>
-
-                        </label>
-
-                        <asp:TextBox ID="txtPhone"
-                            runat="server"
-                            CssClass="form-control">
-                        </asp:TextBox>
-
+                        <label>Phone Number <span class="verified-pill">✓ Verified</span></label>
+                        <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
-
 
                     <div class="form-group full">
-
-                        <label>
-                            Email Address
-
-                            <span class="verified-pill">
-                                ✓ Verified
-                            </span>
-
-                        </label>
-
-                        <asp:TextBox ID="txtEmail"
-                            runat="server"
-                            CssClass="form-control readonly"
-                            ReadOnly="true">
-                        </asp:TextBox>
-
+                        <label>Email Address <span class="verified-pill">✓ Verified</span></label>
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control readonly" ReadOnly="true"></asp:TextBox>
                     </div>
-
 
                 </div>
 
@@ -836,138 +751,50 @@
             <div class="form-card">
 
                 <div class="form-card-header">
-
-                    <h3>
-                        Address Information
-                    </h3>
-
-                    <p>
-                        Update your current address and location details.
-                    </p>
-
+                    <h3>Address Information</h3>
+                    <p>Update your current address and location details.</p>
                 </div>
-
 
                 <div class="form-grid">
 
-
                     <div class="form-group">
-
-                        <label>
-                            Address Line 1
-                            <span class="required">*</span>
-                        </label>
-
-                        <asp:TextBox ID="txtAddress1"
-                            runat="server"
-                            CssClass="form-control">
-                        </asp:TextBox>
-
+                        <label>Address Line 1 <span class="required">*</span></label>
+                        <asp:TextBox ID="txtAddress1" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            Address Line 2
-                            <span style="font-weight:400;color:#aaa;">
-                                (Optional)
-                            </span>
-                        </label>
-
-                        <asp:TextBox ID="txtAddress2"
-                            runat="server"
-                            CssClass="form-control">
-                        </asp:TextBox>
-
+                        <label>Address Line 2 <span style="font-weight:400;color:#aaa;">(Optional)</span></label>
+                        <asp:TextBox ID="txtAddress2" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            City
-                        </label>
-
-                        <asp:TextBox ID="txtCity"
-                            runat="server"
-                            CssClass="form-control">
-                        </asp:TextBox>
-
+                        <label>City</label>
+                        <asp:TextBox ID="txtCity" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            State
-                        </label>
-
-                        <asp:DropDownList ID="ddlState"
-                            runat="server"
-                            CssClass="form-control">
-
-                            <asp:ListItem Text="Gujarat"
-                                Value="Gujarat">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Maharashtra"
-                                Value="Maharashtra">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Rajasthan"
-                                Value="Rajasthan">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Madhya Pradesh"
-                                Value="Madhya Pradesh">
-                            </asp:ListItem>
-
+                        <label>State</label>
+                        <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="Gujarat" Value="Gujarat"></asp:ListItem>
+                            <asp:ListItem Text="Maharashtra" Value="Maharashtra"></asp:ListItem>
+                            <asp:ListItem Text="Rajasthan" Value="Rajasthan"></asp:ListItem>
+                            <asp:ListItem Text="Madhya Pradesh" Value="Madhya Pradesh"></asp:ListItem>
                         </asp:DropDownList>
-
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            PIN Code
-                        </label>
-
-                        <asp:TextBox ID="txtPincode"
-                            runat="server"
-                            CssClass="form-control">
-                        </asp:TextBox>
-
+                        <label>PIN Code</label>
+                        <asp:TextBox ID="txtPincode" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            Country
-                        </label>
-
-                        <asp:DropDownList ID="ddlCountry"
-                            runat="server"
-                            CssClass="form-control">
-
-                            <asp:ListItem Text="India"
-                                Value="India">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="United States"
-                                Value="United States">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="United Kingdom"
-                                Value="United Kingdom">
-                            </asp:ListItem>
-
+                        <label>Country</label>
+                        <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="India" Value="India"></asp:ListItem>
+                            <asp:ListItem Text="United States" Value="United States"></asp:ListItem>
+                            <asp:ListItem Text="United Kingdom" Value="United Kingdom"></asp:ListItem>
                         </asp:DropDownList>
-
                     </div>
-
 
                 </div>
 
@@ -976,28 +803,14 @@
 
             <div class="settings-grid">
 
-
                 <div class="setting-card">
 
-                    <h3>
-                        Blood Requirement Preferences
-                    </h3>
-
-                    <p>
-                        Set your default blood search preferences.
-                    </p>
-
+                    <h3>Blood Requirement Preferences</h3>
+                    <p>Set your default blood search preferences.</p>
 
                     <div class="form-group">
-
-                        <label>
-                            Blood Group
-                        </label>
-
-                        <asp:DropDownList ID="ddlBloodGroup"
-                            runat="server"
-                            CssClass="form-control">
-
+                        <label>Blood Group</label>
+                        <asp:DropDownList ID="ddlBloodGroup" runat="server" CssClass="form-control">
                             <asp:ListItem Text="O+" Value="O+"></asp:ListItem>
                             <asp:ListItem Text="O-" Value="O-"></asp:ListItem>
                             <asp:ListItem Text="A+" Value="A+"></asp:ListItem>
@@ -1006,74 +819,32 @@
                             <asp:ListItem Text="B-" Value="B-"></asp:ListItem>
                             <asp:ListItem Text="AB+" Value="AB+"></asp:ListItem>
                             <asp:ListItem Text="AB-" Value="AB-"></asp:ListItem>
-
                         </asp:DropDownList>
-
                     </div>
 
-
-                    <div class="form-group"
-                         style="margin-top:15px;">
-
-                        <label>
-                            Search Radius
-                        </label>
-
-                        <asp:DropDownList ID="ddlRadius"
-                            runat="server"
-                            CssClass="form-control">
-
+                    <div class="form-group" style="margin-top:15px;">
+                        <label>Search Radius</label>
+                        <asp:DropDownList ID="ddlRadius" runat="server" CssClass="form-control">
                             <asp:ListItem Text="5 km" Value="5"></asp:ListItem>
                             <asp:ListItem Text="10 km" Value="10"></asp:ListItem>
                             <asp:ListItem Text="15 km" Value="15"></asp:ListItem>
                             <asp:ListItem Text="25 km" Value="25"></asp:ListItem>
                             <asp:ListItem Text="50 km" Value="50"></asp:ListItem>
-
                         </asp:DropDownList>
-
                     </div>
 
-
-                    <div class="form-group"
-                         style="margin-top:15px;">
-
-                        <label>
-                            Primary Location
-                        </label>
-
-                        <asp:TextBox ID="txtPrimaryLocation"
-                            runat="server"
-                            CssClass="form-control">
-                        </asp:TextBox>
-
+                    <div class="form-group" style="margin-top:15px;">
+                        <label>Primary Location</label>
+                        <asp:TextBox ID="txtPrimaryLocation" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
 
-
-                    <div class="form-group"
-                         style="margin-top:15px;">
-
-                        <label>
-                            Default Urgency
-                        </label>
-
-                        <asp:DropDownList ID="ddlUrgency"
-                            runat="server"
-                            CssClass="form-control">
-
-                            <asp:ListItem Text="Normal"
-                                Value="Normal">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Urgent"
-                                Value="Urgent">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Emergency"
-                                Value="Emergency">
-                            </asp:ListItem>
-
+                    <div class="form-group" style="margin-top:15px;">
+                        <label>Default Urgency</label>
+                        <asp:DropDownList ID="ddlUrgency" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="Normal" Value="Normal"></asp:ListItem>
+                            <asp:ListItem Text="Urgent" Value="Urgent"></asp:ListItem>
+                            <asp:ListItem Text="Emergency" Value="Emergency"></asp:ListItem>
                         </asp:DropDownList>
-
                     </div>
 
                 </div>
@@ -1081,90 +852,39 @@
 
                 <div class="setting-card">
 
-                    <h3>
-                        Privacy & Visibility
-                    </h3>
-
-                    <p>
-                        Control what other users can see.
-                    </p>
-
+                    <h3>Privacy & Visibility</h3>
+                    <p>Control what other users can see.</p>
 
                     <div class="setting-row">
-
                         <div class="setting-info">
-
-                            <strong>
-                                Profile Visibility
-                            </strong>
-
-                            <span>
-                                Allow others to view profile
-                            </span>
-
+                            <strong>Profile Visibility</strong>
+                            <span>Allow others to view profile</span>
                         </div>
-
                         <div class="toggle">
                             <div class="toggle-circle"></div>
                         </div>
-
                     </div>
 
-
                     <div class="setting-row">
-
                         <div class="setting-info">
-
-                            <strong>
-                                Show Contact Info
-                            </strong>
-
-                            <span>
-                                Display phone & email
-                            </span>
-
+                            <strong>Show Contact Info</strong>
+                            <span>Display phone & email</span>
                         </div>
-
                         <div class="toggle">
                             <div class="toggle-circle"></div>
                         </div>
-
                     </div>
 
-
                     <div class="setting-row">
-
                         <div class="setting-info">
-
-                            <strong>
-                                Location Visibility
-                            </strong>
-
-                            <span>
-                                Control location display
-                            </span>
-
+                            <strong>Location Visibility</strong>
+                            <span>Control location display</span>
                         </div>
-
-                        <asp:DropDownList ID="ddlLocationVisibility"
-                            runat="server"
-                            CssClass="form-control"
-                            style="width:130px;height:34px;">
-
-                            <asp:ListItem Text="Approximate Area"
-                                Value="Approximate Area">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Exact Location"
-                                Value="Exact Location">
-                            </asp:ListItem>
-
-                            <asp:ListItem Text="Hidden"
-                                Value="Hidden">
-                            </asp:ListItem>
-
+                        <asp:DropDownList ID="ddlLocationVisibility" runat="server" CssClass="form-control" style="width:130px;height:34px;">
+                            <asp:ListItem Text="Approximate Area" Value="Approximate Area"></asp:ListItem>
+                            <asp:ListItem Text="Exact Location" Value="Exact Location"></asp:ListItem>
+                            <asp:ListItem Text="Hidden" Value="Hidden"></asp:ListItem>
                         </asp:DropDownList>
-
                     </div>
 
                 </div>
@@ -1172,64 +892,27 @@
 
                 <div class="setting-card">
 
-                    <h3>
-                        Notifications
-                    </h3>
-
-                    <p>
-                        Manage your notification preferences.
-                    </p>
-
+                    <h3>Notifications</h3>
+                    <p>Manage your notification preferences.</p>
 
                     <div class="setting-row">
-
-                        <div class="setting-info">
-                            <strong>Emergency Requests</strong>
-                        </div>
-
-                        <div class="toggle">
-                            <div class="toggle-circle"></div>
-                        </div>
-
+                        <div class="setting-info"><strong>Emergency Requests</strong></div>
+                        <div class="toggle"><div class="toggle-circle"></div></div>
                     </div>
 
-
                     <div class="setting-row">
-
-                        <div class="setting-info">
-                            <strong>Donor Matches</strong>
-                        </div>
-
-                        <div class="toggle">
-                            <div class="toggle-circle"></div>
-                        </div>
-
+                        <div class="setting-info"><strong>Donor Matches</strong></div>
+                        <div class="toggle"><div class="toggle-circle"></div></div>
                     </div>
 
-
                     <div class="setting-row">
-
-                        <div class="setting-info">
-                            <strong>Status Updates</strong>
-                        </div>
-
-                        <div class="toggle">
-                            <div class="toggle-circle"></div>
-                        </div>
-
+                        <div class="setting-info"><strong>Status Updates</strong></div>
+                        <div class="toggle"><div class="toggle-circle"></div></div>
                     </div>
 
-
                     <div class="setting-row">
-
-                        <div class="setting-info">
-                            <strong>Promotional</strong>
-                        </div>
-
-                        <div class="toggle toggle-off">
-                            <div class="toggle-circle"></div>
-                        </div>
-
+                        <div class="setting-info"><strong>Promotional</strong></div>
+                        <div class="toggle toggle-off"><div class="toggle-circle"></div></div>
                     </div>
 
                 </div>
@@ -1237,59 +920,26 @@
 
                 <div class="setting-card">
 
-                    <h3>
-                        Account Security
-                    </h3>
-
-                    <p>
-                        Manage your account security settings.
-                    </p>
-
+                    <h3>Account Security</h3>
+                    <p>Manage your account security settings.</p>
 
                     <div class="setting-row">
-
                         <div class="setting-info">
-
-                            <strong>
-                                Password
-                            </strong>
-
-                            <span>
-                                Last changed 3 months ago
-                            </span>
-
+                            <strong>Password</strong>
+                            <span>Last changed 3 months ago</span>
                         </div>
-
-                        <a href="#"
-                           class="change-password">
-                            Change Password
-                        </a>
-
+                        <a href="#" class="change-password">Change Password</a>
                     </div>
 
-
                     <div class="setting-row">
-
                         <div class="setting-info">
-
-                            <strong>
-                                Two-Factor Authentication
-                            </strong>
-
-                            <span>
-                                Extra security for your account
-                            </span>
-
+                            <strong>Two-Factor Authentication</strong>
+                            <span>Extra security for your account</span>
                         </div>
-
-                        <span class="status-pill">
-                            Enabled
-                        </span>
-
+                        <span class="status-pill">Enabled</span>
                     </div>
 
                 </div>
-
 
             </div>
 
@@ -1301,13 +951,9 @@
     <div class="bottom-action">
 
         <div class="unsaved-message">
-
             <i class="fa-solid fa-circle-info"></i>
-
             Your changes are not saved yet.
-
         </div>
-
 
         <div class="bottom-buttons">
 
@@ -1315,11 +961,8 @@
                 runat="server"
                 NavigateUrl="~/User_Profile.aspx"
                 CssClass="cancel-button">
-
                 Cancel
-
             </asp:HyperLink>
-
 
             <asp:Button ID="btnSave"
                 runat="server"
