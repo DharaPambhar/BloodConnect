@@ -101,6 +101,12 @@
     <Content Include="FindCamps.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
+    <Content Include="images\about_image.png" />
+    <Content Include="images\camp1.png" />
+    <Content Include="images\camp2.png" />
+    <Content Include="images\camp3.png" />
+    <Content Include="images\DonorDashboard_image.png" />
+    <Content Include="images\home_image.png" />
     <Content Include="images\login_image.png" />
     <Content Include="images\register_image.png" />
     <Content Include="images\verify_image.png" />

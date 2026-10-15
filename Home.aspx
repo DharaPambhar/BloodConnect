@@ -1,40 +1,54 @@
-﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site1.Master"
+﻿
+<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site1.Master"
     AutoEventWireup="true" CodeBehind="home.aspx.cs"
     Inherits="WebApplication1.home" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <style>
-
+<style>
     /* ================= HERO ================= */
 
-   .hero {
-    min-height: 560px;
-    background: #FFF0F3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #000000;
-    padding: 50px 20px;
-}
+    .hero {
+        min-height: 560px;
+        background: #FFF0F3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 6%;
+        box-sizing: border-box;
+    }
 
-.hero-content {
-    max-width: 850px;
-}
+    .hero-container {
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 45px;
+    }
 
-.hero-content h1 {
-    font-size: 52px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #000000;
-}
+    .hero-content {
+        flex: 1;
+        min-width: 0;
+        text-align: left;
+    }
 
-.hero-content p {
-    font-size: 19px;
-    line-height: 1.7;
-    margin-bottom: 30px;
-    color: #000000;
-}
+    .hero-content h1 {
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 20px;
+        color: #000000;
+    }
+
+    .hero-content p {
+        font-size: 19px;
+        line-height: 1.7;
+        margin-bottom: 30px;
+        color: #000000;
+    }
+
     .hero-btn {
         display: inline-block;
         padding: 13px 30px;
@@ -43,7 +57,7 @@
         text-decoration: none;
         border-radius: 6px;
         font-weight: 600;
-        margin: 5px;
+        margin: 5px 8px 5px 0;
     }
 
     .hero-btn:hover {
@@ -51,6 +65,25 @@
         color: #FFFFFF;
     }
 
+   .hero-image-container {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hero-image {
+    display: block;
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 16px;
+    box-shadow: none;
+}
 
     /* ================= STATISTICS ================= */
 
@@ -198,6 +231,7 @@
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        box-sizing: border-box;
     }
 
     .emergency-form h3 {
@@ -268,6 +302,7 @@
         background-color: #FFFFFF;
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        box-sizing: border-box;
     }
 
     .work-number {
@@ -288,67 +323,39 @@
     }
 
 
-    /* ================= FOOTER ================= */
-
-    .footer {
-        background-color: #F1F3FB;
-        color: #1F2937;
-        padding: 50px 30px 20px;
-    }
-
-    .footer-container {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        gap: 40px;
-        flex-wrap: wrap;
-    }
-
-    .footer-box {
-        width: 220px;
-    }
-
-    .footer-box h3,
-    .footer-box h4 {
-        color: #1F2937;
-        margin-bottom: 15px;
-    }
-
-    .footer-box p {
-        color: #6B7280;
-        line-height: 1.6;
-        font-size: 14px;
-    }
-
-    .footer-box a {
-        display: block;
-        color: #6B7280;
-        text-decoration: none;
-        margin-bottom: 8px;
-        font-size: 14px;
-    }
-
-    .footer-box a:hover {
-        color: #D80032;
-    }
-
-    .copyright {
-        text-align: center;
-        border-top: 1px solid #D1D5DB;
-        margin-top: 35px;
-        padding-top: 20px;
-        color: #6B7280;
-        font-size: 13px;
-    }
-
-
     /* ================= RESPONSIVE ================= */
 
     @media (max-width: 768px) {
 
+        .hero {
+            padding: 35px 20px;
+        }
+
+        .hero-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 30px;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
         .hero-content h1 {
             font-size: 38px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+        }
+
+        .hero-image-container {
+            width: 100%;
+        }
+
+        .hero-image {
+            height: 280px;
+            max-width: 100%;
         }
 
         .stats {
@@ -359,12 +366,30 @@
             flex-direction: column;
         }
 
+        .emergency-info,
+        .emergency-form {
+            min-width: 0;
+            width: 100%;
+        }
+
         .footer-container {
             flex-direction: column;
         }
-
     }
 
+    @media (max-width: 480px) {
+        .hero-content h1 {
+            font-size: 32px;
+        }
+
+        .hero-image {
+            height: 230px;
+        }
+
+        .hero-btn {
+            padding: 12px 20px;
+        }
+    }
 </style>
 
 </asp:Content>
@@ -372,27 +397,45 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
     <!-- ================= HERO SECTION ================= -->
 
     <section class="hero">
 
-        <div class="hero-content">
+        <div class="hero-container">
 
-            <h1>Every Drop Can Save a Life.</h1>
+            <!-- LEFT SIDE: TEXT AND BUTTONS -->
 
-            <p>
-                Join a network of everyday heroes. Whether you need blood urgently
-                or want to donate, BloodConnect bridges the gap instantly and safely.
-            </p>
+            <div class="hero-content">
 
-            <a href="FindBlood.aspx" class="hero-btn">
-                Find Blood
-            </a>
+                <h1>Every Drop Can Save a Life.</h1>
 
-            <a href="Register.aspx" class="hero-btn">
-                Become a Donor
-            </a>
+                <p>
+                    Join a network of everyday heroes. Whether you need blood urgently
+                    or want to donate, BloodConnect bridges the gap instantly and safely.
+                </p>
+
+                <a href="FindBlood.aspx" class="hero-btn">
+                    Find Blood
+                </a>
+
+                <a href="Register.aspx" class="hero-btn">
+                    Become a Donor
+                </a>
+
+            </div>
+
+            <!-- RIGHT SIDE: YOUR EXISTING IMAGE -->
+
+            <div class="hero-image-container">
+
+                <asp:Image
+                    ID="HomeHeroImage"
+                    runat="server"
+                    ImageUrl="~/Images/home_image.png"
+                    AlternateText="Blood donation at a medical facility"
+                    CssClass="hero-image" />
+
+            </div>
 
         </div>
 
@@ -404,29 +447,18 @@
     <section class="stats">
 
         <div class="stat-box">
-
             <h2>150K+</h2>
-
             <p>VERIFIED DONORS</p>
-
         </div>
 
-
         <div class="stat-box">
-
             <h2>850+</h2>
-
             <p>BLOOD BANKS</p>
-
         </div>
 
-
         <div class="stat-box">
-
             <h2>24/7</h2>
-
             <p>EMERGENCY SUPPORT</p>
-
         </div>
 
     </section>
@@ -458,34 +490,28 @@
 
             </div>
 
-
             <div class="form-group">
 
                 <label>Location:</label>
 
-                <input type="text"
-                       placeholder="City or Pincode" />
+                <input type="text" placeholder="City or Pincode" />
 
             </div>
-
 
             <div class="form-group">
 
                 <label>Search Radius:</label>
 
                 <select>
-
                     <option>Within 5km</option>
                     <option>Within 10km</option>
                     <option>Within 25km</option>
                     <option>Within 50km</option>
-
                 </select>
 
             </div>
 
-
-            <button class="search-btn">
+            <button type="button" class="search-btn">
                 Search Blood
             </button>
 
@@ -499,7 +525,6 @@
     <section class="emergency-section">
 
         <div class="emergency-container">
-
 
             <div class="emergency-info">
 
@@ -516,23 +541,20 @@
                 </p>
 
                 <a href="Emergency.aspx" class="emergency-link">
-                    View Emergency Requests ->
+                    View Emergency Requests -&gt;
                 </a>
 
             </div>
 
-
             <div class="emergency-form">
 
                 <h3>Create Emergency Request</h3>
-
 
                 <div class="form-group">
 
                     <label>Required Blood Group :</label>
 
                     <select>
-
                         <option>Select Group</option>
                         <option>A+</option>
                         <option>A-</option>
@@ -542,11 +564,9 @@
                         <option>AB-</option>
                         <option>O+</option>
                         <option>O-</option>
-
                     </select>
 
                 </div>
-
 
                 <div class="form-group">
 
@@ -557,18 +577,15 @@
 
                 </div>
 
-
                 <div class="form-group">
 
                     <label>Units Required :</label>
 
-                    <input type="number"
-                           placeholder="e.g., 2" />
+                    <input type="number" placeholder="e.g., 2" />
 
                 </div>
 
-
-                <button class="request-btn">
+                <button type="button" class="request-btn">
                     Request Blood Now
                 </button>
 
@@ -590,9 +607,7 @@
             resources with those who need them most.
         </p>
 
-
         <div class="works-container">
-
 
             <div class="work-card">
 
@@ -609,7 +624,6 @@
 
             </div>
 
-
             <div class="work-card">
 
                 <div class="work-number">
@@ -624,7 +638,6 @@
                 </p>
 
             </div>
-
 
             <div class="work-card">
 
@@ -641,12 +654,8 @@
 
             </div>
 
-
         </div>
 
     </section>
-
-
-
 
 </asp:Content>

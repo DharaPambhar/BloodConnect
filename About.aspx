@@ -1,36 +1,58 @@
-﻿<%@ Page Title="About Us" Language="C#" MasterPageFile="~/Site1.Master"
+﻿
+<%@ Page Title="About Us" Language="C#" MasterPageFile="~/Site1.Master"
     AutoEventWireup="true" CodeBehind="About.aspx.cs"
     Inherits="WebApplication1.About" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <style>
+
+        /* ================= ABOUT HERO ================= */
+
         .about-hero {
-    background: #FFF0F3;
-    padding: 90px 10%;
-    color: #1F2937;
-    text-align: center;
-}
-      .about-tag {
-    color: #D80032;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
+            background: #FFF0F3;
+            padding: 60px 7%;
+            color: #1F2937;
+            text-align: left;
+            box-sizing: border-box;
+        }
 
-       .about-hero h1 {
-    color: #1F2937;
-    font-size: 48px;
-    margin-bottom: 20px;
-}
+        .about-hero-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+        }
 
-       .about-hero p {
-    color: #6B7280;
-    max-width: 800px;
-    margin: auto;
-    font-size: 18px;
-    line-height: 1.7;
-}
+        .about-hero-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .about-tag {
+            color: #D80032;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .about-hero h1 {
+            color: #1F2937;
+            font-size: 48px;
+            line-height: 1.2;
+            margin: 0 0 20px;
+        }
+
+        .about-hero p {
+            color: #6B7280;
+            max-width: 800px;
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.7;
+        }
 
         .about-buttons {
             margin-top: 30px;
@@ -39,13 +61,37 @@
         .about-btn {
             display: inline-block;
             padding: 13px 28px;
-            margin: 8px;
+            margin: 8px 8px 8px 0;
             background: #D80032;
-            color: white;
+            color: #FFFFFF;
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
         }
+
+        .about-btn:hover {
+            background: #D00036;
+            color: #FFFFFF;
+        }
+
+        .about-image-container {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .about-image {
+            display: block;
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 16px;
+        }
+
+
+        /* ================= MISSION ================= */
 
         .mission-section {
             padding: 70px 10%;
@@ -65,6 +111,9 @@
             margin: 20px auto;
             line-height: 1.7;
         }
+
+
+        /* ================= CORE VALUES ================= */
 
         .values-section {
             padding: 70px 10%;
@@ -86,11 +135,12 @@
         }
 
         .value-card {
-            background: white;
+            background: #FFFFFF;
             width: 280px;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-sizing: border-box;
         }
 
         .value-card h3 {
@@ -102,6 +152,9 @@
             color: #6B7280;
             line-height: 1.6;
         }
+
+
+        /* ================= IMPACT ================= */
 
         .impact-section {
             padding: 70px 10%;
@@ -133,6 +186,9 @@
             font-weight: bold;
             margin-top: 8px;
         }
+
+
+        /* ================= FOOTER ================= */
 
         .footer {
             background: #F1F3FB;
@@ -166,19 +222,71 @@
             text-align: center;
             margin-top: 35px;
             padding-top: 20px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid #DDDDDD;
             color: #6B7280;
         }
 
-        @media(max-width:768px) {
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            .about-hero {
+                padding: 40px 20px;
+            }
+
+            .about-hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .about-hero-content {
+                width: 100%;
+            }
+
             .about-hero h1 {
                 font-size: 34px;
+            }
+
+            .about-hero p {
+                margin: auto;
+                font-size: 16px;
+            }
+
+            .about-image-container {
+                width: 100%;
+                flex: none;
+            }
+
+            .about-image {
+                height: 280px;
             }
 
             .impact-container {
                 gap: 30px;
             }
+
+            .footer-container {
+                flex-direction: column;
+            }
         }
+
+        @media (max-width: 480px) {
+
+            .about-hero h1 {
+                font-size: 30px;
+            }
+
+            .about-image {
+                height: 230px;
+            }
+
+            .about-btn {
+                padding: 12px 20px;
+            }
+        }
+
     </style>
 
 </asp:Content>
@@ -186,37 +294,64 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <!-- About Hero -->
+
+    <!-- ================= ABOUT HERO ================= -->
+
     <section class="about-hero">
 
-        <div class="about-tag">
-            ABOUT BLOODCONNECT
-        </div>
+        <div class="about-hero-container">
 
-        <h1>Connecting People. Saving Lives.</h1>
+            <!-- LEFT SIDE: TEXT AND BUTTONS -->
 
-        <p>
-            We are building a reliable, human-centric community to make blood
-            donation accessible, transparent, and fast. Every connection we
-            make has the potential to save a life.
-        </p>
+            <div class="about-hero-content">
 
-        <div class="about-buttons">
+                <div class="about-tag">
+                    ABOUT BLOODCONNECT
+                </div>
 
-            <a href="FindBlood.aspx" class="about-btn">
-                Find Blood
-            </a>
+                <h1>Connecting People. Saving Lives.</h1>
 
-            <a href="Register.aspx" class="about-btn">
-                Become a Donor
-            </a>
+                <p>
+                    We are building a reliable, human-centric community to make blood
+                    donation accessible, transparent, and fast. Every connection we
+                    make has the potential to save a life.
+                </p>
+
+                <div class="about-buttons">
+
+                    <a href="FindBlood.aspx" class="about-btn">
+                        Find Blood
+                    </a>
+
+                    <a href="Register.aspx" class="about-btn">
+                        Become a Donor
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE: EXISTING IMAGE -->
+
+            <div class="about-image-container">
+
+                <asp:Image
+                    ID="AboutHeroImage"
+                    runat="server"
+                    ImageUrl="~/Images/about_image.png"
+                    AlternateText="Nurse assisting a blood donor in a clinical room"
+                    CssClass="about-image" />
+
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- Mission -->
+    <!-- ================= MISSION ================= -->
+
     <section class="mission-section">
 
         <h2>Making Blood Access Simple, Fast &amp; Human</h2>
@@ -230,7 +365,8 @@
     </section>
 
 
-    <!-- Core Values -->
+    <!-- ================= CORE VALUES ================= -->
+
     <section class="values-section">
 
         <h2>Our Core Values</h2>
@@ -277,7 +413,8 @@
     </section>
 
 
-    <!-- Impact -->
+    <!-- ================= IMPACT ================= -->
+
     <section class="impact-section">
 
         <h2>Our Impact</h2>
@@ -323,11 +460,5 @@
 
     </section>
 
-
-    
-
-
-            
-  
 
 </asp:Content>
