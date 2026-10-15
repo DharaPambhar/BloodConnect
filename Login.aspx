@@ -1,11 +1,11 @@
-﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site1.Master"
+﻿
+<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site1.Master"
     AutoEventWireup="true" CodeBehind="Login.aspx.cs"
     Inherits="BloodConnect.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <style>
-
         .login-page {
             background-color: #F8F9FA;
             min-height: 550px;
@@ -17,6 +17,7 @@
 
         .login-container {
             width: 1100px;
+            max-width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -28,6 +29,7 @@
         .login-left {
             flex: 1;
             padding: 20px;
+            min-width: 0;
         }
 
         .login-left h1 {
@@ -48,14 +50,31 @@
             max-width: 500px;
         }
 
+        /* LOGIN IMAGE */
+
+        
+.login-image {
+    width: 100%;
+    max-width: 540px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 25px;
+    display: block;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
         /* LOGIN CARD */
 
         .login-card {
             width: 400px;
+            flex-shrink: 0;
             background-color: #FFFFFF;
             padding: 40px;
             border-radius: 14px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
         }
 
         .login-card h2 {
@@ -191,27 +210,41 @@
 
         @media (max-width: 800px) {
 
+            .login-page {
+                padding: 35px 5%;
+            }
+
             .login-container {
                 flex-direction: column;
                 gap: 30px;
             }
 
             .login-left {
+                width: 100%;
+                box-sizing: border-box;
                 text-align: center;
+            }
+
+            .login-left h1 {
+                font-size: 38px;
             }
 
             .login-left p {
                 margin: auto;
             }
 
+            .login-image {
+                margin: 25px auto 0;
+                max-width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 10;
+            }
+
             .login-card {
                 width: 100%;
                 max-width: 400px;
-                box-sizing: border-box;
             }
-
         }
-
     </style>
 
 </asp:Content>
@@ -235,6 +268,15 @@
                     Connect with donors, find blood, and be part of a
                     community that makes a difference.
                 </p>
+
+                <!-- BLOOD DONATION IMAGE -->
+
+                <asp:Image
+                    ID="LoginImage"
+                    runat="server"
+                    ImageUrl="~/Images/login_image.png"
+                    CssClass="login-image"
+                    AlternateText="Blood Donation Center" />
 
             </div>
 

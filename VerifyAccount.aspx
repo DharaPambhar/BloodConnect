@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Verify Your Account" Language="C#" MasterPageFile="~/Site1.Master"
+﻿
+<%@ Page Title="Verify Your Account" Language="C#" MasterPageFile="~/Site1.Master"
     AutoEventWireup="true" CodeBehind="VerifyAccount.aspx.cs"
     Inherits="WebApplication1.VerifyAccount" %>
 
@@ -262,7 +263,7 @@
             margin: 0;
         }
 
-        /* IMAGE PLACEHOLDER */
+        /* VERIFICATION IMAGE */
 
         .verification-graphic {
             height: 180px;
@@ -272,9 +273,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #9CA3AF;
-            font-size: 14px;
+            overflow: hidden;
         }
+        .verification-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
 
         /* RESPONSIVE */
 
@@ -321,11 +328,9 @@
 
         <div class="verification-container">
 
-
             <!-- LEFT VERIFICATION CARD -->
 
             <div class="verification-card">
-
 
                 <!-- STEP PROGRESS -->
 
@@ -341,9 +346,7 @@
 
                     </div>
 
-
                     <div class="step-line"></div>
-
 
                     <div class="step active">
 
@@ -355,9 +358,7 @@
 
                     </div>
 
-
                     <div class="step-line-gray"></div>
-
 
                     <div class="step">
 
@@ -370,7 +371,6 @@
                     </div>
 
                 </div>
-
 
                 <!-- TITLE -->
 
@@ -387,7 +387,6 @@
 
                 </div>
 
-
                 <!-- NOTIFICATION -->
 
                 <div class="notification-box">
@@ -403,13 +402,11 @@
 
                 </div>
 
-
                 <!-- OTP -->
 
                 <div class="otp-title">
                     ENTER VERIFICATION CODE
                 </div>
-
 
                 <div class="otp-container">
 
@@ -457,7 +454,6 @@
 
                 </div>
 
-
                 <!-- RESEND -->
 
                 <div class="resend-section">
@@ -474,7 +470,6 @@
 
                 </div>
 
-
                 <!-- VERIFY BUTTON -->
 
                 <asp:Button
@@ -484,13 +479,11 @@
                     CssClass="verify-button"
                     OnClick="VERIFYCONTINUE_Click" />
 
-
                 <!-- BACK -->
 
                 <a href="Registration.aspx" class="back-link">
                     ← Back to Account
                 </a>
-
 
                 <!-- SECURITY -->
 
@@ -502,32 +495,32 @@
 
             </div>
 
-
             <!-- RIGHT COMMUNITY SECTION -->
 
             <div class="community-section">
 
-
-                <!-- IMAGE WILL BE ADDED LATER -->
+                <!-- VERIFICATION IMAGE -->
 
                 <div class="verification-graphic">
 
-                    BloodConnect Verification Graphic
+                    <asp:Image
+                        ID="VerificationImage"
+                        runat="server"
+                        ImageUrl="~/Images/verify_image.png"
+                        AlternateText="BloodConnect Verification"
+                        CssClass="verification-image" />
 
                 </div>
-
 
                 <h2>
                     Be Part of the BloodConnect Community
                 </h2>
-
 
                 <p>
                     Whether you donate blood or need support,
                     BloodConnect helps connect people when it matters most.
                     Join a network of everyday heroes.
                 </p>
-
 
                 <div class="feature">
 
@@ -537,7 +530,6 @@
 
                 </div>
 
-
                 <div class="feature">
 
                     <h3>
@@ -545,7 +537,6 @@
                     </h3>
 
                 </div>
-
 
                 <div class="feature">
 

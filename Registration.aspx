@@ -1,11 +1,11 @@
-﻿<%@ Page Title="Registration" Language="C#" MasterPageFile="~/Site1.Master"
+﻿
+<%@ Page Title="Registration" Language="C#" MasterPageFile="~/Site1.Master"
     AutoEventWireup="true" CodeBehind="Registration.aspx.cs"
     Inherits="WebApplication1.Registration" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <style>
-
         .registration-page {
             background-color: #F8F9FA;
             padding: 60px 7%;
@@ -22,10 +22,12 @@
 
         .registration-card {
             flex: 1.2;
+            min-width: 0;
             background-color: #FFFFFF;
             padding: 40px;
             border-radius: 14px;
             box-shadow: 0 6px 25px rgba(0,0,0,0.07);
+            box-sizing: border-box;
         }
 
         .registration-title {
@@ -85,8 +87,6 @@
             margin: 0 8px 20px;
         }
 
-        /* ROLE */
-
         .role-title {
             color: #374151;
             font-size: 13px;
@@ -137,6 +137,7 @@
 
         .form-group {
             flex: 1;
+            min-width: 0;
             margin-bottom: 18px;
         }
 
@@ -212,9 +213,12 @@
             text-decoration: none;
         }
 
+        /* RIGHT COMMUNITY SECTION */
         .community-section {
             flex: 0.8;
-            padding: 45px 20px;
+            min-width: 0;
+            padding: 35px 10px;
+            box-sizing: border-box;
         }
 
         .community-section h2 {
@@ -228,7 +232,18 @@
             color: #6B7280;
             font-size: 14px;
             line-height: 1.7;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+        }
+
+        /* COMMUNITY IMAGE */
+        .community-image {
+            width: 100%;
+            max-width: 540px;
+            height: 340px;
+            object-fit: contain;
+            display: block;
+            margin: 20px auto 25px;
+            border-radius: 12px;
         }
 
         .feature {
@@ -249,6 +264,9 @@
         }
 
         @media (max-width: 850px) {
+            .registration-page {
+                padding: 30px 5%;
+            }
 
             .registration-container {
                 flex-direction: column;
@@ -256,16 +274,27 @@
 
             .registration-card {
                 width: 100%;
-                box-sizing: border-box;
             }
 
             .community-section {
-                padding: 20px;
+                width: 100%;
+                padding: 25px 10px;
             }
 
+            .community-image {
+                max-width: 100%;
+                height: auto;
+            }
         }
 
         @media (max-width: 600px) {
+            .registration-card {
+                padding: 22px;
+            }
+
+            .registration-title h1 {
+                font-size: 27px;
+            }
 
             .form-row {
                 flex-direction: column;
@@ -280,12 +309,13 @@
                 width: 25px;
             }
 
+            .community-section h2 {
+                font-size: 24px;
+            }
         }
-
     </style>
 
 </asp:Content>
-
 
 <asp:Content ID="Content2"
     ContentPlaceHolderID="ContentPlaceHolder1"
@@ -295,80 +325,48 @@
 
         <div class="registration-container">
 
-
             <!-- LEFT REGISTRATION FORM -->
-
             <div class="registration-card">
 
-
                 <!-- STEP INDICATOR -->
-
                 <div class="steps">
 
                     <div class="step active">
-
-                        <div class="step-circle">
-                            1
-                        </div>
-
+                        <div class="step-circle">1</div>
                         Account
-
                     </div>
 
                     <div class="step-line"></div>
 
                     <div class="step">
-
-                        <div class="step-circle">
-                            2
-                        </div>
-
+                        <div class="step-circle">2</div>
                         Verification
-
                     </div>
 
                     <div class="step-line"></div>
 
                     <div class="step">
-
-                        <div class="step-circle">
-                            3
-                        </div>
-
+                        <div class="step-circle">3</div>
                         Complete
-
                     </div>
 
                 </div>
 
-
                 <!-- TITLE -->
-
                 <div class="registration-title">
-
-                    <h1>
-                        Create Your Account
-                    </h1>
-
+                    <h1>Create Your Account</h1>
                     <p>
                         Join BloodConnect and help make blood available
                         to those who need it.
                     </p>
-
                 </div>
 
-
                 <!-- ROLE -->
-
                 <div class="role-title">
                     I WANT TO JOIN AS:
                 </div>
 
-
                 <div class="role-selection">
-
-
-                    <!-- DONOR -->
 
                     <asp:Button
                         ID="btnDonor"
@@ -377,9 +375,6 @@
                         CssClass="role-box selected"
                         OnClick="btnDonor_Click"
                         CausesValidation="false" />
-
-
-                    <!-- BLOOD SEEKER -->
 
                     <asp:Button
                         ID="btnSeeker"
@@ -391,31 +386,21 @@
 
                 </div>
 
-
                 <!-- SELECTED ROLE -->
-
                 <asp:HiddenField
                     ID="SelectedRole"
                     runat="server"
                     Value="Donor" />
 
-
                 <!-- FIRST NAME + LAST NAME -->
-
                 <div class="form-row">
-
 
                     <div class="form-group">
 
-                        <label class="form-label">
-                            FIRST NAME
-                        </label>
+                        <label class="form-label">FIRST NAME</label>
 
                         <div class="input-icon-box">
-
-                            <span class="left-icon">
-                                👤
-                            </span>
+                            <span class="left-icon">👤</span>
 
                             <asp:TextBox
                                 ID="FirstNameTXT"
@@ -423,7 +408,6 @@
                                 CssClass="registration-input"
                                 placeholder="Jane">
                             </asp:TextBox>
-
                         </div>
 
                         <asp:RequiredFieldValidator
@@ -437,18 +421,12 @@
 
                     </div>
 
-
                     <div class="form-group">
 
-                        <label class="form-label">
-                            LAST NAME
-                        </label>
+                        <label class="form-label">LAST NAME</label>
 
                         <div class="input-icon-box">
-
-                            <span class="left-icon">
-                                👤
-                            </span>
+                            <span class="left-icon">👤</span>
 
                             <asp:TextBox
                                 ID="LastNameTXT"
@@ -456,7 +434,6 @@
                                 CssClass="registration-input"
                                 placeholder="Doe">
                             </asp:TextBox>
-
                         </div>
 
                         <asp:RequiredFieldValidator
@@ -472,20 +449,13 @@
 
                 </div>
 
-
                 <!-- EMAIL -->
-
                 <div class="form-group">
 
-                    <label class="form-label">
-                        EMAIL ADDRESS
-                    </label>
+                    <label class="form-label">EMAIL ADDRESS</label>
 
                     <div class="input-icon-box">
-
-                        <span class="left-icon">
-                            ✉
-                        </span>
+                        <span class="left-icon">✉</span>
 
                         <asp:TextBox
                             ID="EmailTXT"
@@ -493,7 +463,6 @@
                             CssClass="registration-input"
                             placeholder="jane@example.com">
                         </asp:TextBox>
-
                     </div>
 
                     <asp:RequiredFieldValidator
@@ -517,20 +486,13 @@
 
                 </div>
 
-
                 <!-- PHONE -->
-
                 <div class="form-group">
 
-                    <label class="form-label">
-                        PHONE NUMBER
-                    </label>
+                    <label class="form-label">PHONE NUMBER</label>
 
                     <div class="input-icon-box">
-
-                        <span class="left-icon">
-                            ☎
-                        </span>
+                        <span class="left-icon">☎</span>
 
                         <asp:TextBox
                             ID="PhoneTXT"
@@ -539,7 +501,6 @@
                             placeholder="9876543210"
                             MaxLength="10">
                         </asp:TextBox>
-
                     </div>
 
                     <asp:RequiredFieldValidator
@@ -563,23 +524,15 @@
 
                 </div>
 
-
                 <!-- CITY + PINCODE -->
-
                 <div class="form-row">
-
 
                     <div class="form-group">
 
-                        <label class="form-label">
-                            CITY
-                        </label>
+                        <label class="form-label">CITY</label>
 
                         <div class="input-icon-box">
-
-                            <span class="left-icon">
-                                🏢
-                            </span>
+                            <span class="left-icon">🏢</span>
 
                             <asp:TextBox
                                 ID="CityTXT"
@@ -587,7 +540,6 @@
                                 CssClass="registration-input"
                                 placeholder="Rajkot">
                             </asp:TextBox>
-
                         </div>
 
                         <asp:RequiredFieldValidator
@@ -601,18 +553,12 @@
 
                     </div>
 
-
                     <div class="form-group">
 
-                        <label class="form-label">
-                            PINCODE / ZIP
-                        </label>
+                        <label class="form-label">PINCODE / ZIP</label>
 
                         <div class="input-icon-box">
-
-                            <span class="left-icon">
-                                📍
-                            </span>
+                            <span class="left-icon">📍</span>
 
                             <asp:TextBox
                                 ID="PincodeTXT"
@@ -620,7 +566,6 @@
                                 CssClass="registration-input"
                                 placeholder="360001">
                             </asp:TextBox>
-
                         </div>
 
                         <asp:RequiredFieldValidator
@@ -636,23 +581,15 @@
 
                 </div>
 
-
                 <!-- PASSWORD + CONFIRM PASSWORD -->
-
                 <div class="form-row">
-
 
                     <div class="form-group">
 
-                        <label class="form-label">
-                            CREATE PASSWORD
-                        </label>
+                        <label class="form-label">CREATE PASSWORD</label>
 
                         <div class="input-icon-box">
-
-                            <span class="left-icon">
-                                🔒
-                            </span>
+                            <span class="left-icon">🔒</span>
 
                             <asp:TextBox
                                 ID="PasswordTXT"
@@ -661,7 +598,6 @@
                                 TextMode="Password"
                                 placeholder="Create password">
                             </asp:TextBox>
-
                         </div>
 
                         <asp:RequiredFieldValidator
@@ -675,18 +611,12 @@
 
                     </div>
 
-
                     <div class="form-group">
 
-                        <label class="form-label">
-                            CONFIRM PASSWORD
-                        </label>
+                        <label class="form-label">CONFIRM PASSWORD</label>
 
                         <div class="input-icon-box">
-
-                            <span class="left-icon">
-                                🔒
-                            </span>
+                            <span class="left-icon">🔒</span>
 
                             <asp:TextBox
                                 ID="ConfirmPasswordTXT"
@@ -695,7 +625,6 @@
                                 TextMode="Password"
                                 placeholder="Confirm password">
                             </asp:TextBox>
-
                         </div>
 
                         <asp:RequiredFieldValidator
@@ -721,9 +650,7 @@
 
                 </div>
 
-
                 <!-- CREATE ACCOUNT -->
-
                 <asp:Button
                     ID="CREATEACCOUNT"
                     runat="server"
@@ -731,29 +658,18 @@
                     CssClass="create-button"
                     OnClick="CREATEACCOUNT_Click" />
 
-
                 <!-- LOGIN -->
-
                 <div class="login-link">
-
                     Already have an account?
-
-                    <a href="Login.aspx">
-                        Login
-                    </a>
-
+                    <a href="Login.aspx">Login</a>
                 </div>
 
             </div>
 
-
             <!-- RIGHT COMMUNITY SECTION -->
-
             <div class="community-section">
 
-                <h2>
-                    Be Part of the BloodConnect Community
-                </h2>
+                <h2>Be Part of the BloodConnect Community</h2>
 
                 <p>
                     Whether you donate blood or need support,
@@ -761,12 +677,17 @@
                     Join a network of everyday heroes.
                 </p>
 
+                <!-- COMMUNITY IMAGE -->
+                <asp:Image
+                    ID="CommunityImage"
+                    runat="server"
+                    ImageUrl="~/Images/register_image.png"
+                    CssClass="community-image"
+                    AlternateText="BloodConnect Community Illustration" />
 
                 <div class="feature">
 
-                    <h3>
-                        ♥ Help Save Lives
-                    </h3>
+                    <h3>♥ Help Save Lives</h3>
 
                     <p>
                         A single donation can save up to three lives.
@@ -775,12 +696,9 @@
 
                 </div>
 
-
                 <div class="feature">
 
-                    <h3>
-                        🤝 Connect With Your Community
-                    </h3>
+                    <h3>🤝 Connect With Your Community</h3>
 
                     <p>
                         Join local drives, meet fellow donors, and support
@@ -789,12 +707,9 @@
 
                 </div>
 
-
                 <div class="feature">
 
-                    <h3>
-                        🔒 Safe &amp; Secure
-                    </h3>
+                    <h3>🔒 Safe &amp; Secure</h3>
 
                     <p>
                         Your health data and personal information are encrypted

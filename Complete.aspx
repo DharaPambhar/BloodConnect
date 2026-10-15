@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Account Created Successfully" Language="C#" MasterPageFile="~/Site1.Master"
+﻿
+<%@ Page Title="Account Created Successfully" Language="C#" MasterPageFile="~/Site1.Master"
     AutoEventWireup="true" CodeBehind="Complete.aspx.cs"
     Inherits="WebApplication1.Complete" %>
 
@@ -191,18 +192,25 @@
             padding: 40px 35px;
         }
 
-        /* IMAGE PLACEHOLDER */
+        /* COMMUNITY IMAGE */
 
         .community-graphic {
-            height: 180px;
-            background-color: #FFFFFF;
+            height: 240px;
+            background-color: #EAEFFD;
             border-radius: 12px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #9CA3AF;
-            font-size: 14px;
             margin-bottom: 30px;
+        }
+
+        .community-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
         }
 
         .community-section h2 {
@@ -264,11 +272,9 @@
 
         <div class="complete-container">
 
-
             <!-- LEFT SUCCESS CARD -->
 
             <div class="success-card">
-
 
                 <!-- STEP PROGRESS -->
 
@@ -284,9 +290,7 @@
 
                     </div>
 
-
                     <div class="step-line"></div>
-
 
                     <div class="step">
 
@@ -298,9 +302,7 @@
 
                     </div>
 
-
                     <div class="step-line"></div>
-
 
                     <div class="step">
 
@@ -314,13 +316,11 @@
 
                 </div>
 
-
                 <!-- SUCCESS ICON -->
 
                 <div class="success-icon">
                     ✓
                 </div>
-
 
                 <!-- SUCCESS TITLE -->
 
@@ -342,7 +342,6 @@
 
                 </div>
 
-
                 <!-- STATUS BOX -->
 
                 <div class="status-box">
@@ -350,7 +349,6 @@
                     <div class="status-title">
                         Your account is ready
                     </div>
-
 
                     <div class="status-item">
 
@@ -362,7 +360,6 @@
 
                     </div>
 
-
                     <div class="status-item">
 
                         <span class="status-check">
@@ -372,7 +369,6 @@
                         Phone verified
 
                     </div>
-
 
                     <div class="status-item">
 
@@ -386,7 +382,6 @@
 
                 </div>
 
-
                 <!-- LOGIN BUTTON -->
 
                 <div class="action-buttons">
@@ -397,7 +392,6 @@
 
                 </div>
 
-
                 <!-- SECURITY -->
 
                 <div class="security-note">
@@ -405,7 +399,6 @@
                     🔒 Your information is protected with secure authentication.
 
                 </div>
-
 
                 <!-- BACK TO LOGIN -->
 
@@ -415,25 +408,26 @@
 
             </div>
 
-
             <!-- RIGHT COMMUNITY SECTION -->
 
             <div class="community-section">
 
-
-                <!-- IMAGE WILL BE ADDED LATER -->
+                <!-- COMMUNITY IMAGE -->
 
                 <div class="community-graphic">
 
-                    Together, We Save Lives.
+                    <asp:Image
+                        ID="CommunityImage"
+                        runat="server"
+                        ImageUrl="~/Images/register_image.png"
+                        AlternateText="Together, We Save Lives - BloodConnect"
+                        CssClass="community-image" />
 
                 </div>
-
 
                 <h2>
                     Welcome to the BloodConnect Community
                 </h2>
-
 
                 <!-- FEATURE 1 -->
 
@@ -449,7 +443,6 @@
 
                 </div>
 
-
                 <!-- FEATURE 2 -->
 
                 <div class="feature">
@@ -463,7 +456,6 @@
                     </p>
 
                 </div>
-
 
                 <!-- FEATURE 3 -->
 
