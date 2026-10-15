@@ -68,6 +68,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Admin_Appointments.aspx" />
+    <Content Include="Admin_BloodBanks.aspx" />
+    <Content Include="Admin_Campaigns.aspx" />
+    <Content Include="Admin_Dashboard.aspx" />
+    <Content Include="Admin_Donors.aspx" />
+    <Content Include="Admin_Hospitals.aspx" />
+    <Content Include="Admin_Inventory.aspx" />
+    <Content Include="Admin_Requests.aspx" />
+    <Content Include="Admin_Settings.aspx" />
+    <Content Include="Admin_Users.aspx" />
     <Content Include="App_Data\BloodConnect.mdf" />
     <Content Include="App_Data\BloodConnect_log.ldf">
       <DependentUpon>BloodConnect.mdf</DependentUpon>
@@ -117,6 +127,83 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Appointments.aspx.cs">
+      <DependentUpon>Admin_Appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Appointments.aspx.designer.cs">
+      <DependentUpon>Admin_Appointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_BloodBanks.aspx.cs">
+      <DependentUpon>Admin_BloodBanks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_BloodBanks.aspx.designer.cs">
+      <DependentUpon>Admin_BloodBanks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Campaigns.aspx.cs">
+      <DependentUpon>Admin_Campaigns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Campaigns.aspx.designer.cs">
+      <DependentUpon>Admin_Campaigns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Dashboard.aspx.cs">
+      <DependentUpon>Admin_Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Dashboard.aspx.designer.cs">
+      <DependentUpon>Admin_Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Donors.aspx.cs">
+      <DependentUpon>Admin_Donors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Donors.aspx.designer.cs">
+      <DependentUpon>Admin_Donors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Hospitals.aspx.cs">
+      <DependentUpon>Admin_Hospitals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Hospitals.aspx.designer.cs">
+      <DependentUpon>Admin_Hospitals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Inventory.aspx.cs">
+      <DependentUpon>Admin_Inventory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Inventory.aspx.designer.cs">
+      <DependentUpon>Admin_Inventory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Requests.aspx.cs">
+      <DependentUpon>Admin_Requests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Requests.aspx.designer.cs">
+      <DependentUpon>Admin_Requests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Settings.aspx.cs">
+      <DependentUpon>Admin_Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Settings.aspx.designer.cs">
+      <DependentUpon>Admin_Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Users.aspx.cs">
+      <DependentUpon>Admin_Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Users.aspx.designer.cs">
+      <DependentUpon>Admin_Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="BloodBanks.aspx.cs">
       <DependentUpon>BloodBanks.aspx</DependentUpon>
@@ -391,6 +478,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Donor.Master" />
+    <Content Include="Admin.Master" />
     <None Include="packages.config" />
     <Content Include="site1.Master" />
     <Content Include="User.Master" />

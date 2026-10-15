@@ -1,0 +1,514 @@
+﻿
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="BloodConnect.Admin" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server">
+            Admin Dashboard - BloodConnect
+        </asp:ContentPlaceHolder>
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet" />
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fc;
+            color: #333;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 255px;
+            height: 100vh;
+            background: #ffffff;
+            border-right: 1px solid #eeeeee;
+            padding: 22px 15px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 12px 25px 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            background: #b91c1c;
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #b91c1c;
+        }
+
+        /* MENU */
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            text-decoration: none;
+            color: #555;
+            padding: 12px 14px;
+            margin-bottom: 4px;
+            border-radius: 10px;
+            border-left: 4px solid transparent;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .menu-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .menu-link:hover {
+            background: #FDF2F2;
+            color: #B91C1C;
+        }
+
+        .menu-link.active {
+            background: #FEE2E2;
+            color: #B91C1C;
+            border-left-color: #B91C1C;
+            font-weight: 600;
+        }
+
+        .menu-link.active:hover {
+            background: #FECACA;
+            color: #B91C1C;
+        }
+
+        .logout-link {
+            color: #dc2626;
+        }
+
+        .logout-link:hover {
+            background: #fff1f1;
+            color: #b91c1c;
+        }
+
+        .menu-divider {
+            border: 0;
+            border-top: 1px solid #eeeeee;
+            margin: 15px 5px;
+        }
+
+        /* MAIN AREA */
+
+        .main-area {
+            margin-left: 255px;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+
+        .top-header {
+            min-height: 78px;
+            background: white;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 12px 30px;
+        }
+
+        .page-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #222;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        /* SEARCH */
+
+        .admin-search {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .admin-search i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .admin-search input {
+            width: 100%;
+            height: 42px;
+            padding: 0 14px 0 40px;
+            border: 1px solid #e5e7eb;
+            border-radius: 9px;
+            background: #f8f9fc;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .admin-search input:focus {
+            border-color: #7354AD;
+            background: #fff;
+        }
+
+        /* ADMIN PROFILE */
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-shrink: 0;
+        }
+
+        .notification {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f2effb;
+            color: #7354AD;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .notification:hover {
+            background: #e6e1f7;
+            color: #5b4292;
+        }
+
+        .notification-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #dc2626;
+            border-radius: 50%;
+            top: 7px;
+            right: 8px;
+        }
+
+        .profile-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-image {
+            width: 43px;
+            height: 43px;
+            min-width: 43px;
+            border-radius: 50%;
+            background: #e8defc;
+            color: #6b50b5;
+            border: 2px solid #eee8fb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .profile-info {
+            line-height: 1.3;
+        }
+
+        .profile-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .profile-role {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* CONTENT */
+
+        .content-area {
+            padding: 30px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1100px) {
+            .top-header {
+                padding: 12px 20px;
+                gap: 12px;
+            }
+
+            .admin-search {
+                max-width: 280px;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main-area {
+                margin-left: 220px;
+            }
+
+            .admin-search {
+                max-width: 230px;
+            }
+
+            .page-title {
+                font-size: 19px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                width: 70px;
+                padding: 20px 8px;
+            }
+
+            .logo-text,
+            .menu-link span:not(.menu-icon) {
+                display: none;
+            }
+
+            .logo {
+                justify-content: center;
+                padding: 5px 0 25px;
+            }
+
+            .menu-link {
+                justify-content: center;
+                padding: 13px 5px;
+            }
+
+            .menu-link i {
+                width: auto;
+            }
+
+            .main-area {
+                margin-left: 70px;
+            }
+
+            .top-header {
+                flex-wrap: wrap;
+                padding: 12px 15px;
+            }
+
+            .page-title {
+                font-size: 18px;
+            }
+
+            .admin-search {
+                order: 3;
+                max-width: none;
+                flex-basis: 100%;
+            }
+
+            .user-area {
+                gap: 10px;
+            }
+
+            .profile-info {
+                display: none;
+            }
+
+            .content-area {
+                padding: 15px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+<form id="form1" runat="server">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-droplet"></i>
+            </div>
+            <div class="logo-text">BloodConnect</div>
+        </div>
+
+        <a id="lnkDashboard" runat="server"
+           href="Admin_Dashboard.aspx" class="menu-link">
+            <i class="fa-solid fa-house"></i>
+            <span class="menu-icon">Dashboard</span>
+        </a>
+
+        <a id="lnkUsers" runat="server"
+           href="Admin_Users.aspx" class="menu-link">
+            <i class="fa-solid fa-users"></i>
+            <span class="menu-icon">Users</span>
+        </a>
+
+        <a id="lnkDonors" runat="server"
+           href="Admin_Donors.aspx" class="menu-link">
+            <i class="fa-solid fa-hand-holding-droplet"></i>
+            <span class="menu-icon">Donors</span>
+        </a>
+
+        <a id="lnkRequests" runat="server"
+           href="Admin_Requests.aspx" class="menu-link">
+            <i class="fa-solid fa-file-circle-check"></i>
+            <span class="menu-icon">Requests</span>
+        </a>
+
+        <a id="lnkInventory" runat="server"
+           href="Admin_Inventory.aspx" class="menu-link">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <span class="menu-icon">Inventory</span>
+        </a>
+
+        <a id="lnkBloodBanks" runat="server"
+           href="Admin_BloodBanks.aspx" class="menu-link">
+            <i class="fa-solid fa-hospital"></i>
+            <span class="menu-icon">Blood Banks</span>
+        </a>
+
+        <a id="lnkAppointments" runat="server"
+           href="Admin_Appointments.aspx" class="menu-link">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span class="menu-icon">Appointments</span>
+        </a>
+
+        <a id="lnkHospitals" runat="server"
+           href="Admin_Hospitals.aspx" class="menu-link">
+            <i class="fa-solid fa-hospital-user"></i>
+            <span class="menu-icon">Hospitals</span>
+        </a>
+
+        <a id="lnkCampaigns" runat="server"
+           href="Admin_Campaigns.aspx" class="menu-link">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span class="menu-icon">Campaigns</span>
+        </a>
+
+
+        <a id="lnkSettings" runat="server"
+           href="Admin_Settings.aspx" class="menu-link">
+            <i class="fa-solid fa-gear"></i>
+            <span class="menu-icon">Settings</span>
+        </a>
+
+        <hr class="menu-divider" />
+
+        <a id="lnkLogout" runat="server"
+           href="Logout.aspx" class="menu-link logout-link">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span class="menu-icon">Logout</span>
+        </a>
+
+    </aside>
+
+    <!-- MAIN AREA -->
+
+    <div class="main-area">
+
+        <header class="top-header">
+
+            <h1 class="page-title">
+                <asp:ContentPlaceHolder ID="PageHeading" runat="server">
+                    Admin Dashboard
+                </asp:ContentPlaceHolder>
+            </h1>
+
+            <div class="admin-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text"
+                    placeholder="Search users, donors, or banks..." />
+            </div>
+
+            <div class="user-area">
+
+                <a href="Admin_Analytics.aspx"
+                   class="notification"
+                   aria-label="Admin notifications">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </a>
+
+                <div class="profile-area">
+
+                    <div class="profile-image">
+                        <asp:Label ID="lblAdminInitial" runat="server" />
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="profile-name">
+                            <asp:Label ID="lblAdminName" runat="server" />
+                        </div>
+
+                        <div class="profile-role">
+                            System Admin
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <main class="content-area">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+    </div>
+
+</form>
+</body>
+</html>
