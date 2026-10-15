@@ -12,61 +12,95 @@ namespace BloodConnect
 
         protected void LOGIN_Click(object sender, EventArgs e)
         {
-            if (Page.IsValid)
+            if (!Page.IsValid)
             {
-                string connectionString =
-                    "Data Source=(LocalDB)\\MSSQLLocalDB;" +
-                    "AttachDbFilename=|DataDirectory|\\BloodConnect.mdf;" +
-                    "Integrated Security=True";
+                return;
+            }
 
-                SqlConnection con = new SqlConnection(connectionString);
+            string email = EMAILTXT.Text.Trim();
+            string password = PWDTXT.Text;
 
-                string query = "SELECT Role, FirstName, LastName " +
-                               "FROM Users " +
-                               "WHERE Email = @Email AND Password = @Password";
+            // STATIC ADMIN LOGIN
+            // Admin mate database registration ni jarur nathi.
 
-                SqlCommand cmd = new SqlCommand(query, con);
+            if (email.Equals(
+                    "a@gmail.com",
+                    StringComparison.OrdinalIgnoreCase)
+                && password == "123")
+            {
+                Session["User"] = "a@gmail.com";
+                Session["FirstName"] = "Admin";
+                Session["LastName"] = "";
+                Session["Role"] = "Admin";
 
-                cmd.Parameters.AddWithValue("@Email", EMAILTXT.Text);
-                cmd.Parameters.AddWithValue("@Password", PWDTXT.Text);
+                Response.Redirect("Admin_Dashboard.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
+                return;
+            }
 
-                con.Open();
+            // DONOR / BLOOD SEEKER DATABASE LOGIN
 
-                SqlDataReader dr = cmd.ExecuteReader();
+            string connectionString =
+                "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                "AttachDbFilename=|DataDirectory|\\BloodConnect.mdf;" +
+                "Integrated Security=True";
 
-                if (dr.Read())
+            using (SqlConnection con =
+                   new SqlConnection(connectionString))
+            {
+                string query =
+                    "SELECT Role, FirstName, LastName " +
+                    "FROM Users " +
+                    "WHERE Email = @Email AND Password = @Password";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    Session["User"] = EMAILTXT.Text;
-                    Session["FirstName"] = dr["FirstName"].ToString();
-                    Session["LastName"] = dr["LastName"].ToString();
-                    Session["Role"] = dr["Role"].ToString();
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Password", password);
 
-                    string role = dr["Role"].ToString();
+                    con.Open();
 
-                    dr.Close();
-                    con.Close();
-
-                    if (role == "Donor")
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        Response.Redirect("DonorDashboard.aspx");
-                    }
-                    else if (role == "Blood Seeker")
-                    {
-                        Response.Redirect("User_Dashboard.aspx");
-                    }
-                    else if (role == "Admin")
-                    {
-                        Response.Redirect("AdminDashboard.aspx");
-                    }
-                }
-                else
-                {
-                    dr.Close();
-                    con.Close();
+                        if (dr.Read())
+                        {
+                            string role = dr["Role"].ToString();
 
-                    Response.Write("<script>alert('Invalid Email or Password');</script>");
+                            Session["User"] = email;
+                            Session["FirstName"] =
+                                dr["FirstName"].ToString();
+                            Session["LastName"] =
+                                dr["LastName"].ToString();
+                            Session["Role"] = role;
+
+                            dr.Close();
+
+                            if (role == "Donor")
+                            {
+                                Response.Redirect(
+                                    "DonorDashboard.aspx", false);
+                                Context.ApplicationInstance.CompleteRequest();
+                                return;
+                            }
+                            else if (role == "Blood Seeker")
+                            {
+                                Response.Redirect(
+                                    "User_Dashboard.aspx", false);
+                                Context.ApplicationInstance.CompleteRequest();
+                                return;
+                            }
+                        }
+                    }
                 }
             }
+
+            // INVALID LOGIN
+            ClientScript.RegisterStartupScript(
+                this.GetType(),
+                "LoginError",
+                "alert('Invalid Email or Password');",
+                true
+            );
         }
     }
 }
