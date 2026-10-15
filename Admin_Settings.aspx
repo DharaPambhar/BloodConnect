@@ -10,7 +10,7 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 <style>
 .settings-page {
-    color: #252941; 
+    color: #252941;
     width: 100%;
     box-sizing: border-box;
 }
@@ -187,6 +187,8 @@
 .profile-avatar {
     width: 58px;
     height: 58px;
+    min-width: 58px;
+    min-height: 58px;
     border-radius: 50%;
     background: #f0eefe;
     color: #5144b9;
@@ -196,7 +198,21 @@
     font-size: 23px;
     font-weight: 750;
     flex-shrink: 0;
+    overflow: hidden;
 }
+
+/* Admin profile image */
+.admin-profile-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
 .profile-name {
     margin: 0 0 5px;
     font-size: 15px;
@@ -541,7 +557,14 @@
                 <p class="card-description">Your administrator account information.</p>
 
                 <div class="profile-top">
-                    <div class="profile-avatar">A</div>
+                    <div class="profile-avatar">
+                        <asp:Image
+                            ID="AdminProfileImage"
+                            runat="server"
+                            ImageUrl="~/Images/AdminProfile.png"
+                            AlternateText="Admin Profile"
+                            CssClass="admin-profile-image" />
+                    </div>
                     <div>
                         <p class="profile-name">Admin Administrator</p>
                         <div class="profile-email">admin@bloodconnect.org</div>

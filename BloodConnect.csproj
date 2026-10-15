@@ -102,6 +102,7 @@
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="images\about_image.png" />
+    <Content Include="images\AdminProfile.png" />
     <Content Include="images\camp1.png" />
     <Content Include="images\camp2.png" />
     <Content Include="images\camp3.png" />
