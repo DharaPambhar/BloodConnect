@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Find Donation Camps" Language="C#" MasterPageFile="~/Donor.Master"
+﻿
+<%@ Page Title="Find Donation Camps" Language="C#" MasterPageFile="~/Donor.Master"
     AutoEventWireup="true"
     CodeBehind="FindCamps.aspx.cs"
     Inherits="WebApplication1.FindCamps" %>
@@ -6,7 +7,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 <style>
-
     .camps-page {
         width: 100%;
     }
@@ -65,7 +65,6 @@
     .change-location:hover {
         text-decoration: underline;
     }
-
 
     /* ================= FILTER CARD ================= */
 
@@ -177,7 +176,6 @@
         background: #B00029;
     }
 
-
     /* ================= RESULTS HEADER ================= */
 
     .results-header {
@@ -229,7 +227,6 @@
         font-size: 10px;
     }
 
-
     /* ================= CONTENT GRID ================= */
 
     .content-grid {
@@ -238,7 +235,6 @@
         gap: 20px;
         align-items: start;
     }
-
 
     /* ================= MAP ================= */
 
@@ -310,12 +306,11 @@
         text-decoration: underline;
     }
 
-
     /* ================= CAMP GRID ================= */
 
     .camp-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 13px;
     }
 
@@ -325,6 +320,8 @@
         border-radius: 13px;
         padding: 16px;
         transition: 0.2s;
+        min-width: 0;
+        box-sizing: border-box;
     }
 
     .camp-card:hover {
@@ -332,40 +329,58 @@
         box-shadow: 0 3px 12px rgba(0,0,0,0.05);
     }
 
+    /* ================= CAMP IMAGES ================= */
+
+    .camp-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 9px;
+    margin-bottom: 12px;
+}
+    /* ================= CAMP TITLE AND STATUS ================= */
+
     .camp-top {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         gap: 8px;
         margin-bottom: 12px;
+        flex-wrap: wrap;
     }
 
     .camp-name {
+        flex: 1;
+        min-width: 0;
         margin: 0;
         color: #202338;
         font-size: 13px;
-        line-height: 1.4;
+        line-height: 1.5;
+        overflow-wrap: break-word;
+    }
+
+    .open-status,
+    .few-status {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 5px 8px;
+        border-radius: 12px;
+        font-size: 8px;
+        font-weight: bold;
     }
 
     .open-status {
         background: #E9F9F0;
         color: #15803D;
-        padding: 5px 8px;
-        border-radius: 12px;
-        font-size: 8px;
-        font-weight: bold;
-        white-space: nowrap;
     }
 
     .few-status {
         background: #FFF6E5;
         color: #C26A00;
-        padding: 5px 8px;
-        border-radius: 12px;
-        font-size: 8px;
-        font-weight: bold;
-        white-space: nowrap;
     }
+
+    /* ================= CAMP DETAILS ================= */
 
     .camp-info {
         border-top: 1px solid #F0F0F0;
@@ -405,6 +420,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 6px;
     }
 
     .slots span {
@@ -439,7 +455,6 @@
     .camp-button:hover {
         background: #B00029;
     }
-
 
     /* ================= BOTTOM INFO ================= */
 
@@ -478,13 +493,11 @@
         font-size: 9px;
     }
 
-
     /* ================= RESPONSIVE ================= */
 
     @media (max-width: 1200px) {
-
         .filter-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         .content-grid {
@@ -494,11 +507,9 @@
         .map-box {
             height: 300px;
         }
-
     }
 
     @media (max-width: 800px) {
-
         .page-header-top {
             flex-direction: column;
             align-items: flex-start;
@@ -521,39 +532,28 @@
         .camp-grid {
             grid-template-columns: 1fr;
         }
-
     }
-
 </style>
 
 </asp:Content>
-
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <div class="camps-page">
 
-
     <!-- ================= PAGE HEADER ================= -->
 
     <div class="page-header">
-
         <div class="page-header-top">
 
             <div class="page-title">
-
-                <h1>
-                    Find Donation Camps
-                </h1>
-
+                <h1>Find Donation Camps</h1>
                 <p>
                     Discover nearby blood donation camps and book a convenient donation slot.
                 </p>
-
             </div>
 
             <div class="location-area">
-
                 <div class="location-box">
                     📍 Ahmedabad, Gujarat
                 </div>
@@ -561,28 +561,21 @@
                 <a href="#" class="change-location">
                     Change Location
                 </a>
-
             </div>
 
         </div>
-
     </div>
-
 
     <!-- ================= FILTER ================= -->
 
     <div class="filter-card">
 
         <div class="filter-title">
-            Search & Filter Donation Camps
+            Search &amp; Filter Donation Camps
         </div>
 
-
         <div class="search-box">
-
-            <label>
-                SEARCH
-            </label>
+            <label>SEARCH</label>
 
             <asp:TextBox
                 ID="txtSearch"
@@ -590,20 +583,14 @@
                 CssClass="search-input"
                 placeholder="Search donation camps by name, location, or organizer">
             </asp:TextBox>
-
         </div>
 
-
         <div class="filter-grid">
-
 
             <!-- DATE -->
 
             <div class="filter-item">
-
-                <label>
-                    DATE
-                </label>
+                <label>DATE</label>
 
                 <asp:DropDownList
                     ID="ddlDate"
@@ -616,17 +603,12 @@
                     <asp:ListItem Text="This Week" Value="This Week"></asp:ListItem>
 
                 </asp:DropDownList>
-
             </div>
-
 
             <!-- DISTANCE -->
 
             <div class="filter-item">
-
-                <label>
-                    DISTANCE
-                </label>
+                <label>DISTANCE</label>
 
                 <asp:DropDownList
                     ID="ddlDistance"
@@ -639,17 +621,12 @@
                     <asp:ListItem Text="Any Distance" Value="0"></asp:ListItem>
 
                 </asp:DropDownList>
-
             </div>
-
 
             <!-- CAMP TYPE -->
 
             <div class="filter-item">
-
-                <label>
-                    CAMP TYPE
-                </label>
+                <label>CAMP TYPE</label>
 
                 <asp:DropDownList
                     ID="ddlCampType"
@@ -663,17 +640,12 @@
                     <asp:ListItem Text="Organization" Value="Organization"></asp:ListItem>
 
                 </asp:DropDownList>
-
             </div>
-
 
             <!-- BLOOD GROUP -->
 
             <div class="filter-item">
-
-                <label>
-                    BLOOD GROUP NEEDED
-                </label>
+                <label>BLOOD GROUP NEEDED</label>
 
                 <asp:DropDownList
                     ID="ddlBloodGroup"
@@ -691,17 +663,12 @@
                     <asp:ListItem Text="O-" Value="O-"></asp:ListItem>
 
                 </asp:DropDownList>
-
             </div>
-
 
             <!-- AVAILABILITY -->
 
             <div class="filter-item">
-
-                <label>
-                    AVAILABILITY
-                </label>
+                <label>AVAILABILITY</label>
 
                 <asp:DropDownList
                     ID="ddlAvailability"
@@ -713,9 +680,7 @@
                     <asp:ListItem Text="All" Value="All"></asp:ListItem>
 
                 </asp:DropDownList>
-
             </div>
-
 
             <!-- CLEAR -->
 
@@ -725,7 +690,6 @@
                 Text="Clear Filters"
                 CssClass="clear-btn"
                 OnClick="btnClear_Click" />
-
 
             <!-- APPLY -->
 
@@ -737,88 +701,53 @@
                 OnClick="btnApply_Click" />
 
         </div>
-
     </div>
-
 
     <!-- ================= RESULTS HEADER ================= -->
 
     <div class="results-header">
 
         <div class="results-title">
-
-            <h2>
-                Donation Camps Near You
-            </h2>
+            <h2>Donation Camps Near You</h2>
 
             <span class="found-count">
                 12 FOUND
             </span>
-
         </div>
 
-
         <div class="sort-area">
-
-            <span>
-                Sort by:
-            </span>
+            <span>Sort by:</span>
 
             <select class="sort-select">
-
-                <option>
-                    Nearest
-                </option>
-
-                <option>
-                    Date
-                </option>
-
-                <option>
-                    Most Slots
-                </option>
-
+                <option>Nearest</option>
+                <option>Date</option>
+                <option>Most Slots</option>
             </select>
-
         </div>
 
     </div>
 
-
     <!-- ================= MAP + CAMPS ================= -->
 
     <div class="content-grid">
-
 
         <!-- ================= MAP ================= -->
 
         <div class="map-card">
 
             <div class="map-header">
-
-                <h2>
-                    🔴 Camp Locations
-                </h2>
-
-                <span>
-                    AHMEDABAD
-                </span>
-
+                <h2>🔴 Camp Locations</h2>
+                <span>AHMEDABAD</span>
             </div>
 
-
             <div class="map-box">
-
                 <iframe
                     src="https://www.openstreetmap.org/export/embed.html?bbox=72.52%2C23.00%2C72.65%2C23.10&amp;layer=mapnik&amp;marker=23.0225%2C72.5714"
                     loading="lazy">
                 </iframe>
-
             </div>
 
-
             <div class="map-footer">
-
                 <span class="map-legend">
                     📍 Showing nearby donation camp area
                 </span>
@@ -828,23 +757,26 @@
                    class="expand-map">
                     Expand Map ↗
                 </a>
-
             </div>
 
         </div>
-
 
         <!-- ================= CAMP CARDS ================= -->
 
         <div class="camp-grid">
 
-
             <!-- CAMP 1 -->
 
             <div class="camp-card">
 
-                <div class="camp-top">
+                <asp:Image
+                    ID="DonorCampImage1"
+                    runat="server"
+                    ImageUrl="~/Images/DonorCamp1.png"
+                    AlternateText="Save Life Blood Drive"
+                    CssClass="camp-image" />
 
+                <div class="camp-top">
                     <h3 class="camp-name">
                         Save Life Blood Drive
                     </h3>
@@ -852,91 +784,60 @@
                     <span class="open-status">
                         🟢 OPEN
                     </span>
-
                 </div>
-
 
                 <div class="camp-info">
 
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            🏢
-                        </div>
-
+                        <div class="camp-row-icon">🏢</div>
                         <div class="camp-row-text">
                             Organizer:
-                            <strong>
-                                Rotary Club Central
-                            </strong>
+                            <strong>Rotary Club Central</strong>
                         </div>
-
                     </div>
 
-
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            📅
-                        </div>
-
+                        <div class="camp-row-icon">📅</div>
                         <div class="camp-row-text">
-                            <strong>
-                                Oct 24, 2024
-                            </strong>
+                            <strong>Oct 24, 2024</strong>
                             <br />
                             09:00 AM - 04:00 PM
                         </div>
-
                     </div>
 
-
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            📍
-                        </div>
-
+                        <div class="camp-row-icon">📍</div>
                         <div class="camp-row-text">
                             Town Hall, Ahmedabad
                             <br />
-                            <strong>
-                                2.4 km away
-                            </strong>
+                            <strong>2.4 km away</strong>
                         </div>
-
                     </div>
-
 
                     <div class="slots">
-
-                        <span>
-                            Available Slots
-                        </span>
-
-                        <strong>
-                            18 slots left
-                        </strong>
-
+                        <span>Available Slots</span>
+                        <strong>18 slots left</strong>
                     </div>
 
-
-                    <a href="CampDetails.aspx"
-                       class="camp-button">
+                    <a href="CampDetails.aspx" class="camp-button">
                         Book Slot
                     </a>
 
                 </div>
-
             </div>
-
 
             <!-- CAMP 2 -->
 
             <div class="camp-card">
 
-                <div class="camp-top">
+                <asp:Image
+                    ID="DonorCampImage2"
+                    runat="server"
+                    ImageUrl="~/Images/DonorCamp2.png"
+                    AlternateText="Ahmedabad Community Drive"
+                    CssClass="camp-image" />
 
+                <div class="camp-top">
                     <h3 class="camp-name">
                         Ahmedabad Community Drive
                     </h3>
@@ -944,91 +845,60 @@
                     <span class="open-status">
                         🟢 OPEN
                     </span>
-
                 </div>
-
 
                 <div class="camp-info">
 
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            🏢
-                        </div>
-
+                        <div class="camp-row-icon">🏢</div>
                         <div class="camp-row-text">
                             Organizer:
-                            <strong>
-                                Red Cross Society
-                            </strong>
+                            <strong>Red Cross Society</strong>
                         </div>
-
                     </div>
 
-
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            📅
-                        </div>
-
+                        <div class="camp-row-icon">📅</div>
                         <div class="camp-row-text">
-                            <strong>
-                                Oct 25, 2024
-                            </strong>
+                            <strong>Oct 25, 2024</strong>
                             <br />
                             10:00 AM - 05:00 PM
                         </div>
-
                     </div>
 
-
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            📍
-                        </div>
-
+                        <div class="camp-row-icon">📍</div>
                         <div class="camp-row-text">
                             Gujarat University
                             <br />
-                            <strong>
-                                4.1 km away
-                            </strong>
+                            <strong>4.1 km away</strong>
                         </div>
-
                     </div>
-
 
                     <div class="slots">
-
-                        <span>
-                            Available Slots
-                        </span>
-
-                        <strong>
-                            12 slots left
-                        </strong>
-
+                        <span>Available Slots</span>
+                        <strong>12 slots left</strong>
                     </div>
 
-
-                    <a href="CampDetails.aspx"
-                       class="camp-button">
+                    <a href="CampDetails.aspx" class="camp-button">
                         Book Slot
                     </a>
 
                 </div>
-
             </div>
-
 
             <!-- CAMP 3 -->
 
             <div class="camp-card">
 
-                <div class="camp-top">
+                <asp:Image
+                    ID="DonorCampImage3"
+                    runat="server"
+                    ImageUrl="~/Images/DonorCamp3.png"
+                    AlternateText="Corporate Life Saver"
+                    CssClass="camp-image" />
 
+                <div class="camp-top">
                     <h3 class="camp-name">
                         Corporate Life Saver
                     </h3>
@@ -1036,91 +906,60 @@
                     <span class="open-status">
                         🟢 OPEN
                     </span>
-
                 </div>
-
 
                 <div class="camp-info">
 
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            🏢
-                        </div>
-
+                        <div class="camp-row-icon">🏢</div>
                         <div class="camp-row-text">
                             Organizer:
-                            <strong>
-                                TechPark IT Solutions
-                            </strong>
+                            <strong>TechPark IT Solutions</strong>
                         </div>
-
                     </div>
 
-
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            📅
-                        </div>
-
+                        <div class="camp-row-icon">📅</div>
                         <div class="camp-row-text">
-                            <strong>
-                                Oct 28, 2024
-                            </strong>
+                            <strong>Oct 28, 2024</strong>
                             <br />
                             08:00 AM - 02:00 PM
                         </div>
-
                     </div>
 
-
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            📍
-                        </div>
-
+                        <div class="camp-row-icon">📍</div>
                         <div class="camp-row-text">
                             SG Highway, Ahmedabad
                             <br />
-                            <strong>
-                                6.8 km away
-                            </strong>
+                            <strong>6.8 km away</strong>
                         </div>
-
                     </div>
-
 
                     <div class="slots">
-
-                        <span>
-                            Available Slots
-                        </span>
-
-                        <strong>
-                            25 slots left
-                        </strong>
-
+                        <span>Available Slots</span>
+                        <strong>25 slots left</strong>
                     </div>
 
-
-                    <a href="CampDetails.aspx"
-                       class="camp-button">
+                    <a href="CampDetails.aspx" class="camp-button">
                         Book Slot
                     </a>
 
                 </div>
-
             </div>
-
 
             <!-- CAMP 4 -->
 
             <div class="camp-card">
 
-                <div class="camp-top">
+                <asp:Image
+                    ID="DonorCampImage4"
+                    runat="server"
+                    ImageUrl="~/Images/DonorCamp4.png"
+                    AlternateText="Sunrise Donation Camp"
+                    CssClass="camp-image" />
 
+                <div class="camp-top">
                     <h3 class="camp-name">
                         Sunrise Donation Camp
                     </h3>
@@ -1128,88 +967,50 @@
                     <span class="few-status">
                         🟡 FEW SLOTS LEFT
                     </span>
-
                 </div>
-
 
                 <div class="camp-info">
 
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            🏢
-                        </div>
-
+                        <div class="camp-row-icon">🏢</div>
                         <div class="camp-row-text">
                             Organizer:
-                            <strong>
-                                Lions Club
-                            </strong>
+                            <strong>Lions Club</strong>
                         </div>
-
                     </div>
 
-
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            📅
-                        </div>
-
+                        <div class="camp-row-icon">📅</div>
                         <div class="camp-row-text">
-                            <strong>
-                                Tomorrow
-                            </strong>
+                            <strong>Tomorrow</strong>
                             <br />
                             09:00 AM - 01:00 PM
                         </div>
-
                     </div>
 
-
                     <div class="camp-row">
-
-                        <div class="camp-row-icon">
-                            📍
-                        </div>
-
+                        <div class="camp-row-icon">📍</div>
                         <div class="camp-row-text">
                             Vastrapur, Ahmedabad
                             <br />
-                            <strong>
-                                3.2 km away
-                            </strong>
+                            <strong>3.2 km away</strong>
                         </div>
-
                     </div>
-
 
                     <div class="slots few-slots">
-
-                        <span>
-                            Available Slots
-                        </span>
-
-                        <strong>
-                            8 slots left
-                        </strong>
-
+                        <span>Available Slots</span>
+                        <strong>8 slots left</strong>
                     </div>
 
-
-                    <a href="CampDetails.aspx"
-                       class="camp-button">
+                    <a href="CampDetails.aspx" class="camp-button">
                         Book Slot
                     </a>
 
                 </div>
-
             </div>
 
         </div>
-
     </div>
-
 
     <!-- ================= INFORMATION ================= -->
 
@@ -1220,15 +1021,11 @@
         </div>
 
         <div>
-
-            <strong>
-                Plan Your Donation
-            </strong>
+            <strong>Plan Your Donation</strong>
 
             <span>
                 Please arrive 10–15 minutes before your selected donation slot and carry a valid ID.
             </span>
-
         </div>
 
     </div>

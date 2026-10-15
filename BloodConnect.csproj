@@ -105,6 +105,10 @@
     <Content Include="images\camp1.png" />
     <Content Include="images\camp2.png" />
     <Content Include="images\camp3.png" />
+    <Content Include="images\DonorCamp1.png" />
+    <Content Include="images\DonorCamp2.png" />
+    <Content Include="images\DonorCamp3.png" />
+    <Content Include="images\DonorCamp4.png" />
     <Content Include="images\DonorDashboard_image.png" />
     <Content Include="images\home_image.png" />
     <Content Include="images\login_image.png" />

@@ -50,18 +50,24 @@
             margin-bottom: 25px;
         }
 
-        .profile-photo {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background-color: #FFF0F3;
-            color: #D80032;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            font-weight: bold;
-        }
+       
+.profile-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
 
         .photo-text h3 {
             margin: 0 0 5px;
@@ -243,9 +249,17 @@
 
             <div class="profile-photo-section">
 
-                <div class="profile-photo">
-                    R
-                </div>
+                
+<div class="profile-photo">
+
+    <asp:Image
+        ID="EditProfileImage"
+        runat="server"
+        ImageUrl="~/Images/DonorProfile_image.png"
+        AlternateText="Donor Profile Photo"
+        CssClass="profile-image" />
+
+</div>
 
                 <div class="photo-text">
 

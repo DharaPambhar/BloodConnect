@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Donor Dashboard" Language="C#" MasterPageFile="~/Donor.Master"
+﻿
+<%@ Page Title="Donor Dashboard" Language="C#" MasterPageFile="~/Donor.Master"
     AutoEventWireup="true"
     CodeBehind="DonorDashboard.aspx.cs"
     Inherits="WebApplication1.DonorDashboard" %>
@@ -279,6 +280,34 @@
         }
 
 
+        /* FEATURED CAMP IMAGE */
+
+        .camp-featured {
+            display: flex;
+            align-items: stretch;
+            gap: 18px;
+            border: 1px solid #EEEEEE;
+            border-radius: 9px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+
+        .camp-featured-image {
+            width: 190px;
+            min-width: 190px;
+            min-height: 180px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .camp-featured-content {
+            flex: 1;
+            min-width: 0;
+            padding: 17px 17px 17px 0;
+        }
+
+
         /* QUICK ACTIONS */
 
         .quick-grid {
@@ -399,23 +428,18 @@
         /* RESPONSIVE */
 
         @media (max-width: 1050px) {
-
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
         }
 
         @media (max-width: 800px) {
-
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
-
         }
 
         @media (max-width: 550px) {
-
             .stats-grid {
                 grid-template-columns: 1fr;
             }
@@ -428,6 +452,20 @@
                 font-size: 21px;
             }
 
+            .camp-featured {
+                flex-direction: column;
+            }
+
+            .camp-featured-image {
+                width: 100%;
+                min-width: 0;
+                height: 200px;
+                min-height: 0;
+            }
+
+            .camp-featured-content {
+                padding: 0 17px 17px;
+            }
         }
 
     </style>
@@ -445,7 +483,7 @@
     <div class="welcome-banner">
 
         <h1>
-            Good Morning, <span>Riya! </span>
+            Good Morning, <span>Riya!</span>
         </h1>
 
         <p>
@@ -465,90 +503,37 @@
 
     <div class="stats-grid">
 
-
         <div class="stat-card">
-
             <div class="stat-top">
-
-                <div class="stat-icon pink-icon">
-                    🩸
-                </div>
-
+                <div class="stat-icon pink-icon">🩸</div>
             </div>
-
-            <div class="stat-title">
-                Total Donations
-            </div>
-
-            <div class="stat-value">
-                8
-            </div>
-
+            <div class="stat-title">Total Donations</div>
+            <div class="stat-value">8</div>
         </div>
 
-
         <div class="stat-card">
-
             <div class="stat-top">
-
-                <div class="stat-icon blue-icon">
-                    ❤️
-                </div>
-
+                <div class="stat-icon blue-icon">❤️</div>
             </div>
-
-            <div class="stat-title">
-                Lives Impacted
-            </div>
-
-            <div class="stat-value">
-                24
-            </div>
-
+            <div class="stat-title">Lives Impacted</div>
+            <div class="stat-value">24</div>
         </div>
 
-
         <div class="stat-card">
-
             <div class="stat-top">
-
-                <div class="stat-icon green-icon">
-                    ✓
-                </div>
-
+                <div class="stat-icon green-icon">✓</div>
             </div>
-
-            <div class="stat-title">
-                Next Eligible Date
-            </div>
-
-            <div class="stat-value">
-                90 Days
-            </div>
-
+            <div class="stat-title">Next Eligible Date</div>
+            <div class="stat-value">90 Days</div>
         </div>
 
-
         <div class="stat-card">
-
             <div class="stat-top">
-
-                <div class="stat-icon red-icon">
-                    🚨
-                </div>
-
+                <div class="stat-icon red-icon">🚨</div>
             </div>
-
-            <div class="stat-title">
-                Emergency Responses
-            </div>
-
-            <div class="stat-value">
-                3
-            </div>
-
+            <div class="stat-title">Emergency Responses</div>
+            <div class="stat-value">3</div>
         </div>
-
 
     </div>
 
@@ -573,9 +558,7 @@
 
                 <div class="eligibility-status">
 
-                    <div class="check-circle">
-                        ✓
-                    </div>
+                    <div class="check-circle">✓</div>
 
                     Eligible to Donate
 
@@ -593,8 +576,7 @@
 
                 </div>
 
-                <a href="DonationEligibility.aspx"
-                   class="red-button">
+                <a href="DonationEligibility.aspx" class="red-button">
                     Check Eligibility
                 </a>
 
@@ -608,7 +590,6 @@
                 <div class="card-title">
                     Nearby Emergency Requests
                 </div>
-
 
                 <div class="request-item">
 
@@ -628,18 +609,16 @@
                         Ahmedabad &nbsp; • &nbsp; 3.2 km away
                     </div>
 
-                    <a href="EmergencyDetails.aspx"
-                       class="outline-button">
+                    <a href="EmergencyDetails.aspx" class="outline-button">
                         Respond Now
                     </a>
 
                 </div>
 
-
             </div>
 
 
-            <!-- CAMPS -->
+            <!-- UPCOMING CAMPS -->
 
             <div class="card">
 
@@ -647,30 +626,42 @@
                     Upcoming Camps Near You
                 </div>
 
+                <div class="camp-featured">
 
-                <div class="camp-item">
+                    <!-- LEFT SIDE: CAMP IMAGE -->
 
-                    <div class="camp-name">
-                        Community Blood Donation Drive
+                    <asp:Image
+                        ID="imgFeaturedCamp"
+                        runat="server"
+                        ImageUrl="~/Images/DonorDashboard_image.png"
+                        AlternateText="Blood donation camp at Navrangpura Community Hall with donation chairs, medical equipment and medical staff"
+                        CssClass="camp-featured-image" />
+
+                    <!-- RIGHT SIDE: CAMP DETAILS -->
+
+                    <div class="camp-featured-content">
+
+                        <div class="camp-name">
+                            Community Blood Donation Drive
+                        </div>
+
+                        <div class="camp-info">
+
+                            📅 March 15, 2024
+
+                            <br />
+
+                            📍 Navrangpura Community Hall
+
+                        </div>
+
+                        <a href="BookDonationSlot.aspx" class="blue-button">
+                            Book Slot
+                        </a>
+
                     </div>
-
-                    <div class="camp-info">
-
-                        📅 March 15, 2024
-
-                        <br />
-
-                        📍 Navrangpura Community Hall
-
-                    </div>
-
-                    <a href="BookDonationSlot.aspx"
-                       class="blue-button">
-                        Book Slot
-                    </a>
 
                 </div>
-
 
             </div>
 
@@ -691,57 +682,39 @@
                     Quick Actions
                 </div>
 
-
                 <div class="quick-grid">
 
+                    <a href="FindBloodDonor.aspx" class="quick-action">
 
-                    <a href="FindBloodDonor.aspx"
-                       class="quick-action">
-
-                        <div class="quick-icon">
-                            🔍
-                        </div>
+                        <div class="quick-icon">🔍</div>
 
                         Find Blood
 
                     </a>
 
+                    <a href="EmergencyDetails.aspx" class="quick-action">
 
-                    <a href="EmergencyDetails.aspx"
-                       class="quick-action">
-
-                        <div class="quick-icon">
-                            ➕
-                        </div>
+                        <div class="quick-icon">➕</div>
 
                         New Request
 
                     </a>
 
+                    <a href="#" class="quick-action">
 
-                    <a href="#"
-                       class="quick-action">
-
-                        <div class="quick-icon">
-                            🔗
-                        </div>
+                        <div class="quick-icon">🔗</div>
 
                         Refer Friend
 
                     </a>
 
+                    <a href="#" class="quick-action">
 
-                    <a href="#"
-                       class="quick-action">
-
-                        <div class="quick-icon">
-                            ❓
-                        </div>
+                        <div class="quick-icon">❓</div>
 
                         Support
 
                     </a>
-
 
                 </div>
 
@@ -764,14 +737,9 @@
                     Gallons Donated
                 </div>
 
-
                 <div class="progress">
-
-                    <div class="progress-bar">
-                    </div>
-
+                    <div class="progress-bar"></div>
                 </div>
-
 
                 <div class="impact-badge">
                     You are in the Top 15% of donors
@@ -789,7 +757,6 @@
                     Recent Activity
                 </div>
 
-
                 <div class="activity">
 
                     <div class="activity-title">
@@ -797,12 +764,10 @@
                     </div>
 
                     <div class="activity-info">
-                        Oct 12, 2023
-                        • City Care Hospital
+                        Oct 12, 2023 • City Care Hospital
                     </div>
 
                 </div>
-
 
                 <div class="activity">
 
@@ -811,12 +776,10 @@
                     </div>
 
                     <div class="activity-info">
-                        Aug 05, 2023
-                        • A+ needed urgently
+                        Aug 05, 2023 • A+ needed urgently
                     </div>
 
                 </div>
-
 
                 <div class="activity">
 
@@ -830,14 +793,11 @@
 
                 </div>
 
-
             </div>
 
 
         </div>
 
-
     </div>
-
 
 </asp:Content>

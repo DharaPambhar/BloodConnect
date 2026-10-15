@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Donor Profile" Language="C#" MasterPageFile="~/Donor.Master"
+﻿
+<%@ Page Title="Donor Profile" Language="C#" MasterPageFile="~/Donor.Master"
     AutoEventWireup="true"
     CodeBehind="Donor_profile.aspx.cs"
     Inherits="WebApplication1.Donor_profile" %>
@@ -62,34 +63,23 @@
             margin-bottom: 25px;
         }
 
+        /* PROFILE PHOTO */
+
         .profile-photo {
             width: 90px;
             height: 90px;
             border-radius: 50%;
-            background-color: #FFF0F3;
-            color: #D80032;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: bold;
-            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .verified-icon {
-            position: absolute;
-            right: 0;
-            bottom: 3px;
-            width: 25px;
-            height: 25px;
+        .profile-image {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            background-color: #22C55E;
-            color: white;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid white;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .profile-header h2 {
@@ -346,6 +336,7 @@
 
             .status-box {
                 flex: 1;
+                min-width: 0;
             }
 
             .page-title {
@@ -377,7 +368,6 @@
 
     <div class="profile-page">
 
-
         <!-- PAGE TITLE -->
 
         <div class="page-title">
@@ -401,13 +391,16 @@
 
         <div class="profile-header">
 
+            <!-- ONLY PROFILE PHOTO: NO GREEN TICK -->
+
             <div class="profile-photo">
 
-                R
-
-                <div class="verified-icon">
-                    ✓
-                </div>
+                <asp:Image
+                    ID="DonorProfileImage"
+                    runat="server"
+                    ImageUrl="~/Images/DonorProfile_image.png"
+                    AlternateText="Donor Profile Photo"
+                    CssClass="profile-image" />
 
             </div>
 
@@ -441,7 +434,6 @@
 
                 </div>
 
-
                 <div class="status-box">
 
                     <span class="status-box-title">
@@ -470,108 +462,44 @@
 
                 <h2>Personal Information</h2>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Full Name
-                    </span>
-
-                    <span class="info-value">
-                        Jane Doe
-                    </span>
-
+                    <span class="info-label">Full Name</span>
+                    <span class="info-value">Jane Doe</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Date of Birth
-                    </span>
-
-                    <span class="info-value">
-                        15 Aug 1995
-                    </span>
-
+                    <span class="info-label">Date of Birth</span>
+                    <span class="info-value">15 Aug 1995</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Gender
-                    </span>
-
-                    <span class="info-value">
-                        Female
-                    </span>
-
+                    <span class="info-label">Gender</span>
+                    <span class="info-value">Female</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Phone
-                    </span>
-
-                    <span class="info-value">
-                        +91 98765 43210
-                    </span>
-
+                    <span class="info-label">Phone</span>
+                    <span class="info-value">+91 98765 43210</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Email
-                    </span>
-
-                    <span class="info-value">
-                        jane.doe@example.com
-                    </span>
-
+                    <span class="info-label">Email</span>
+                    <span class="info-value">jane.doe@example.com</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        City
-                    </span>
-
-                    <span class="info-value">
-                        Ahmedabad
-                    </span>
-
+                    <span class="info-label">City</span>
+                    <span class="info-value">Ahmedabad</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        State
-                    </span>
-
-                    <span class="info-value">
-                        Gujarat
-                    </span>
-
+                    <span class="info-label">State</span>
+                    <span class="info-value">Gujarat</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Pincode
-                    </span>
-
-                    <span class="info-value">
-                        380015
-                    </span>
-
+                    <span class="info-label">Pincode</span>
+                    <span class="info-value">380015</span>
                 </div>
 
             </div>
@@ -583,95 +511,39 @@
 
                 <h2>Donor Profile Details</h2>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Blood Group
-                    </span>
-
-                    <span class="red-value">
-                        O+
-                    </span>
-
+                    <span class="info-label">Blood Group</span>
+                    <span class="red-value">O+</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Last Donation Date
-                    </span>
-
-                    <span class="info-value">
-                        12 May 2026
-                    </span>
-
+                    <span class="info-label">Last Donation Date</span>
+                    <span class="info-value">12 May 2026</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Next Eligible Date
-                    </span>
-
-                    <span class="green-value">
-                        10 Aug 2026
-                    </span>
-
+                    <span class="info-label">Next Eligible Date</span>
+                    <span class="green-value">10 Aug 2026</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Donation Frequency
-                    </span>
-
-                    <span class="blue-tag">
-                        Regular Donor
-                    </span>
-
+                    <span class="info-label">Donation Frequency</span>
+                    <span class="blue-tag">Regular Donor</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Total Donations
-                    </span>
-
-                    <span class="info-value">
-                        8
-                    </span>
-
+                    <span class="info-label">Total Donations</span>
+                    <span class="info-value">8</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Lives Impacted (Est.)
-                    </span>
-
-                    <span class="info-value">
-                        24
-                    </span>
-
+                    <span class="info-label">Lives Impacted (Est.)</span>
+                    <span class="info-value">24</span>
                 </div>
 
-
                 <div class="info-row">
-
-                    <span class="info-label">
-                        Emergency Responses
-                    </span>
-
-                    <span class="info-value">
-                        3
-                    </span>
-
+                    <span class="info-label">Emergency Responses</span>
+                    <span class="info-value">3</span>
                 </div>
 
             </div>
@@ -682,7 +554,6 @@
             <div class="profile-card">
 
                 <h2>Account Status</h2>
-
 
                 <div class="account-status">
 
@@ -713,46 +584,26 @@
 
                 <h2>Quick Actions</h2>
 
-
                 <div class="quick-actions">
 
-                    <a href="EditProfile.aspx"
-                       class="quick-action">
-
+                    <a href="EditProfile.aspx" class="quick-action">
                         <span>✎ Edit Profile</span>
-
                         <span class="arrow">→</span>
-
                     </a>
 
-
-                    <a href="Donation_Eligibility.aspx"
-                       class="quick-action">
-
+                    <a href="Donation_Eligibility.aspx" class="quick-action">
                         <span>🛡 Check Eligibility</span>
-
                         <span class="arrow">→</span>
-
                     </a>
 
-
-                    <a href="Donation_History.aspx"
-                       class="quick-action">
-
+                    <a href="Donation_History.aspx" class="quick-action">
                         <span>↺ View Donation History</span>
-
                         <span class="arrow">→</span>
-
                     </a>
 
-
-                    <a href="Notifications.aspx"
-                       class="quick-action">
-
+                    <a href="Notifications.aspx" class="quick-action">
                         <span>🔔 View Notifications</span>
-
                         <span class="arrow">→</span>
-
                     </a>
 
                 </div>
@@ -766,7 +617,6 @@
 
                 <h2>Donation Eligibility</h2>
 
-
                 <div class="eligibility-box">
 
                     <div class="eligibility-title">
@@ -774,10 +624,8 @@
                     </div>
 
                     <p class="eligibility-text">
-
                         You are currently eligible to donate blood.
                         Your next donation can help save more lives.
-
                     </p>
 
                 </div>
@@ -810,7 +658,6 @@
             </div>
 
         </div>
-
 
     </div>
 
