@@ -10,7 +10,7 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 <style>
 .settings-page {
-    color: #252941;
+    color: #252941; 
     width: 100%;
     box-sizing: border-box;
 }
