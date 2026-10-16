@@ -405,8 +405,7 @@
                             <asp:TextBox
                                 ID="FirstNameTXT"
                                 runat="server"
-                                CssClass="registration-input"
-                                placeholder="Jane">
+                                CssClass="registration-input">
                             </asp:TextBox>
                         </div>
 
@@ -431,8 +430,7 @@
                             <asp:TextBox
                                 ID="LastNameTXT"
                                 runat="server"
-                                CssClass="registration-input"
-                                placeholder="Doe">
+                                CssClass="registration-input">
                             </asp:TextBox>
                         </div>
 
@@ -460,8 +458,7 @@
                         <asp:TextBox
                             ID="EmailTXT"
                             runat="server"
-                            CssClass="registration-input"
-                            placeholder="jane@example.com">
+                            CssClass="registration-input">
                         </asp:TextBox>
                     </div>
 
@@ -498,7 +495,6 @@
                             ID="PhoneTXT"
                             runat="server"
                             CssClass="registration-input"
-                            placeholder="9876543210"
                             MaxLength="10">
                         </asp:TextBox>
                     </div>
@@ -537,8 +533,7 @@
                             <asp:TextBox
                                 ID="CityTXT"
                                 runat="server"
-                                CssClass="registration-input"
-                                placeholder="Rajkot">
+                                CssClass="registration-input">
                             </asp:TextBox>
                         </div>
 
@@ -563,8 +558,7 @@
                             <asp:TextBox
                                 ID="PincodeTXT"
                                 runat="server"
-                                CssClass="registration-input"
-                                placeholder="360001">
+                                CssClass="registration-input">
                             </asp:TextBox>
                         </div>
 
@@ -595,8 +589,7 @@
                                 ID="PasswordTXT"
                                 runat="server"
                                 CssClass="registration-input"
-                                TextMode="Password"
-                                placeholder="Create password">
+                                TextMode="Password">
                             </asp:TextBox>
                         </div>
 
@@ -622,8 +615,7 @@
                                 ID="ConfirmPasswordTXT"
                                 runat="server"
                                 CssClass="registration-input"
-                                TextMode="Password"
-                                placeholder="Confirm password">
+                                TextMode="Password">
                             </asp:TextBox>
                         </div>
 
